@@ -59,13 +59,14 @@ input[type="password"] {
 }
 
 button {
-  background-color: #4caf50;
-  color: white;
+  color: #123ac8;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
+  border-radius: 25px;
+  border: 1px solid #123ac8;
 }
 
 button:hover {
