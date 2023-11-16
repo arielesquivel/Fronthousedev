@@ -3,30 +3,29 @@ import React from "react";
 function Login() {
   return (
     <>
-      <div className="image-background"></div>
-      <div className="login">
-        <div>
-          <form>
-            <h2>Iniciar Sesión</h2>
-            <div>
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                // value={formData.email}
-                // onChange={handleInputChange}
-              />
-              <label>Contraseña</label>
-              <input
-                type="password"
-                name="password"
-                // value={formData.password}
-                //onChange={handleInputChange}
-              />
-              <button>Iniciar Sesión</button>
-              <p>olvidaste tu contraseña</p>
-              <p>Registrate aqui</p>
+      <div>
+        <div className="container">
+          <form className="login-form">
+            <div className="container_2">
+              <h1>
+                OF DEV.<p>Tu vivienda esta aqui</p>
+              </h1>
             </div>
+            <label>Email:</label>
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter email"
+              required
+            />
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              required
+            />
+            <button type="submit">Login</button>
           </form>
         </div>
       </div>
