@@ -1,8 +1,12 @@
 body {
-  background-color: #f54343;
+  background-image: url("../imagens/casa.png");
+  background-repeat: no-repeat;
+  background-position: center right;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  height: 20%;
+  width: auto;
 }
 .container_2 {
   width: 100%;
@@ -35,7 +39,7 @@ body {
 }
 .container {
   display: flex;
-  background-image: url("../imagens/casa.png");
+
   background-repeat: no-repeat;
   justify-content: center;
   align-items: center;
@@ -44,10 +48,10 @@ body {
 }
 
 .login-form {
+  padding: 2%;
   background-color: #f8f8f8;
   border-radius: 5px;
-  padding: 30px;
-  width: 300px;
+  width: 20%;
 }
 
 input[type="text"],
@@ -79,8 +83,12 @@ button:hover {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: nowrap;
+  background-color: #fe4236;
   color: #fdfdff;
   list-style: none;
+  padding: 0;
+
+  margin: 0;
 }
 .conteiner_navar input {
   border-radius: 10%;
