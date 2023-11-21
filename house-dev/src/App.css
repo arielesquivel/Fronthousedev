@@ -1,8 +1,9 @@
-body {
+body{
+  background-color: #f54343;
+  font-family: Arial, sans-serif, Montserrat;
   background-image: url("../imagens/casa.png");
   background-repeat: no-repeat;
   background-position: center right;
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   height: 20%;
