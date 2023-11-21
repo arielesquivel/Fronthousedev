@@ -12,7 +12,6 @@ function Navbar() {
         </li>
         <li>Home</li>
       </ul>
-      <Login />
     </>
   );
 }

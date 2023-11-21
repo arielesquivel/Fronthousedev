@@ -19,7 +19,7 @@
   align-content: flex-end;
 }
 
-body {
+.momo {
   display: flex;
   background-image: url("../imagens/casa.png");
   background-repeat: no-repeat;
