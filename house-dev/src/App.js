@@ -1,12 +1,12 @@
 import "./App.css";
 import Login from "./componentes/Login";
 import Registrer from "./componentes/register";
-import Start from "./componentes/start";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Navbar from "./componentes/Navbar";
+import Start from "./componentes/Start";
 function App() {
   const dispatch = useDispatch();
 
@@ -30,8 +30,7 @@ function App() {
   });
   return (
     <div className="App">
-    <Navbar />
-        <Start />
+      <Start />
     </div>
   );
 }
