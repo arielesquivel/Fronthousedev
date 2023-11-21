@@ -35,6 +35,11 @@ body {
   margin-right: -5%;
   align-items: flex-end;
 }
+.image-arrow {
+  fill: #123ac8;
+  stroke-width: 3px;
+  stroke: #fe4236;
+}
 .center-box {
   display: flex;
   flex-direction: column;
