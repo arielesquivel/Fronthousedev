@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 function Login() {
   const [redirect, setRedirect] = React.useState(false);
   const [formData, setFormData] = React.useState({

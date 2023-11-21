@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import axios from "axios";
-
+import Navbar from "./componentes/Navbar";
 function App() {
   const dispatch = useDispatch();
 
@@ -30,9 +30,8 @@ function App() {
   });
   return (
     <div className="App">
-      <header className="App-header">
+    <Navbar />
         <Start />
-      </header>
     </div>
   );
 }
