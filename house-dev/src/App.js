@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import Navbar from "./componentes/Navbar";
 import Start from "./componentes/Start";
+import VistaAgregarProps from "./componentes/VistaAgregarProps";
 function App() {
   const dispatch = useDispatch();
 
@@ -30,7 +31,7 @@ function App() {
   });
   return (
     <div className="App">
-      <Start />
+      <VistaAgregarProps />
     </div>
   );
 }
