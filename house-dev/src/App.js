@@ -5,8 +5,11 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./componentes/Navbar";
 import Start from "./componentes/Start";
+import Home from "./componentes/Home";
+import VistaUsers from "./componentes/VistaUsers";
 import VistaAgregarProps from "./componentes/VistaAgregarProps";
 import VistaPropiedades from "./componentes/VistaPropiedades";
 function App() {
@@ -15,7 +18,7 @@ function App() {
   //const [users, setUser] = useState[{}];
   useEffect(() => {
     axios
-      .get("/api/me")
+      .get("http://localhost:5000/api/me")
       .then((res) => res.data)
       .then((user) =>
         dispatch({
@@ -24,15 +27,26 @@ function App() {
         })
       )
       .catch(({ response }) => {
-        console.error(response.status, response.statusText);
+        console.error(response.status);
       });
   }, []);
-  const user = useSelector((state) => {
-    return state.user;
-  });
+  //const user = useSelector((state) => {
+  //  return state.user;
+  //});
   return (
+    <div>
     <div className="App">
-      <VistaPropiedades />
+      <Start />
+      </div>
+      <Routes>
+      <Route path="/" element={<Start />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registrer />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/admin/agregar" element={<VistaAgregarProps />} />
+        <Route path="/propiedades" element={<VistaPropiedades />} />
+        <Route path="/usuarios" element={<VistaUsers />} />
+      </Routes>
     </div>
   );
 }
