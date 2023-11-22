@@ -10,14 +10,12 @@ function Navbar() {
           <Link to="/login">Login</Link>
         </li>
         <li>
-          {" "}
           <Link to="/register">Registrate</Link>
         </li>
         <li>
           <input type="text" placeholder="¿Que Buscas?"></input>
         </li>
         <li>
-          {" "}
           <Link to="/home">Home</Link>
         </li>
       </ul>

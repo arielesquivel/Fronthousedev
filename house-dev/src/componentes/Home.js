@@ -1,31 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "../start.css";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
-//import background from "../../public/background.png";
 
 function Home() {
   const arrow = process.env.PUBLIC_URL + "/Arrow 16.svg";
-  const [form, setForm] = useState[{}];
-  const handleRadioChange = (e) =>{
-    const type_property = e.target.value;
-    setType({ ...form,type_property });
-  }
-  const handleTextChange = (e) =>{
-    const location = e.target.value;
-    setType({ ...form,location });
-  }
-   const handleSumit = (e) =>{
-     e.preventDefault()
-     
-  }
+  const [form, setForm] = useState({
+    type_property: "", // Inicializa las propiedades en el estado
+    location: "", // Inicializa las propiedades en el estado
+  });
 
+  const handleRadioChange = (e) => {
+    const type_property = e.target.value;
+    setForm({ ...form, type_property });
+  };
+
+  const handleTextChange = (e) => {
+    const location = e.target.value;
+    setForm({ ...form, location });
+  };
+
+  const handleSumit = (e) => {
+    e.preventDefault();
+    // Puedes hacer algo con los datos del formulario aquí
+  };
 
   return (
     <>
-      <Navbar />
       <div className="momo">
         <div className="background">
           <div className="curve-arrow">
@@ -33,27 +34,31 @@ function Home() {
           </div>
           <div className="center-box">
             <label>
-            <input type="radio"
-          value="alquilar"
-          checked={selectedValue === 'alquilar'}
-          onChange={handleRadioChange}
-          /> comprar
-          </label>
-          <label>
-                 <input type="radio"
-          value="comprar"
-          checked={selectedValue === 'comprar'}
-          onChange={handleRadioChange}
-          />alquilar
+              <input
+                type="radio"
+                value="alquilar"
+                checked={form.type_property === "alquilar"}
+                onChange={handleRadioChange}
+              />
+              Comprar
             </label>
             <label>
-            <input type="text" placeholder="Ubicacion"
-            onChange = {handleTextChange}></input>
+              <input
+                type="radio"
+                value="comprar"
+                checked={form.type_property === "comprar"}
+                onChange={handleRadioChange}
+              />
+              Alquilar
             </label>
-            <button
-              onClick={handleSumit}
-              className="btn btn-primary"
-            >
+            <label>
+              <input
+                type="text"
+                placeholder="Ubicacion"
+                onChange={handleTextChange}
+              />
+            </label>
+            <button onClick={handleSumit} className="btn btn-primary">
               Buscar
             </button>
           </div>
