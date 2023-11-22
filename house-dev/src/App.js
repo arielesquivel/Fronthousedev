@@ -1,38 +1,44 @@
+import React, { useEffect } from "react";
+import { Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import Login from "./componentes/Login";
-import Registrer from "./componentes/register";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import axios from "axios";
+import Register from "./componentes/register";
 import Navbar from "./componentes/Navbar";
 import Start from "./componentes/Start";
 import VistaAgregarProps from "./componentes/VistaAgregarProps";
 function App() {
-  const dispatch = useDispatch();
+  /*const dispatch = useDispatch();
 
-  //const [users, setUser] = useState[{}];
   useEffect(() => {
     axios
       .get("/api/me")
-      .then((res) => res.data)
-      .then((user) =>
+      .then((res) =>
         dispatch({
           type: "SET_USER",
-          payload: user,
+          payload: res.data,
         })
       )
-      .catch(({ response }) => {
-        console.error(response.status, response.statusText);
+      .catch((error) => {
+        console.error(error.response.status);
       });
-  }, []);
-  const user = useSelector((state) => {
-    return state.user;
-  });
+  }, [dispatch]);
+
+  //const user = useSelector((state) => state.user);
+*/
   return (
-    <div className="App">
-      <VistaAgregarProps />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/start" component={Start} />
+          <Route path="/vista-agregar-props" component={VistaAgregarProps} />
+          {/* Agrega más rutas según sea necesario */}
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
