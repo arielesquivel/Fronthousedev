@@ -30,13 +30,16 @@ function App() {
         console.error(response.status);
       });
   }, []);
-  const user = useSelector((state) => {
-    return state.user;
-  });
+  //const user = useSelector((state) => {
+  //  return state.user;
+  //});
   return (
+    <div>
     <div className="App">
       <Start />
+      </div>
       <Routes>
+      <Route path="/" element={<Start />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registrer />} />
         <Route path="/home" element={<Home />} />
