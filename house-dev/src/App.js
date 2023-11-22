@@ -1,11 +1,8 @@
+import React, { useEffect } from "react";
+import { Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
 import "./App.css";
 import Login from "./componentes/Login";
-import Registrer from "./componentes/register";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { Routes, Route } from "react-router-dom";
 import Navbar from "./componentes/Navbar";
 import Start from "./componentes/Start";
 import Home from "./componentes/Home";
@@ -15,24 +12,26 @@ import VistaPropiedades from "./componentes/VistaPropiedades";
 function App() {
   const dispatch = useDispatch();
 
-  //const [users, setUser] = useState[{}];
   useEffect(() => {
     axios
+VistaAgregarProps
       .get("http://localhost:5000/api/me")
       .then((res) => res.data)
       .then((user) =>
         dispatch({
           type: "SET_USER",
-          payload: user,
+          payload: res.data,
         })
       )
-      .catch(({ response }) => {
-        console.error(response.status);
+ VistaAgregarProps
+      .catch((error) => {
+        console.error(error.response.status);
       });
-  }, []);
-  //const user = useSelector((state) => {
-  //  return state.user;
-  //});
+  }, [dispatch]);
+
+  //const user = useSelector((state) => state.user);
+
+  
   return (
     <div>
     <div className="App">
