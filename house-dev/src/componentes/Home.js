@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import "../start.css";
-import { useSelector } from "react-redux";
-import Navbar from "./Navbar";
 
 function Home() {
   const arrow = process.env.PUBLIC_URL + "/Arrow 16.svg";
   const [form, setForm] = useState({
-    type_property: "", // Inicializa las propiedades en el estado
-    location: "", // Inicializa las propiedades en el estado
+    type_property: "",
+    location: "",
   });
 
   const handleRadioChange = (e) => {
@@ -22,7 +20,6 @@ function Home() {
 
   const handleSumit = (e) => {
     e.preventDefault();
-    // Puedes hacer algo con los datos del formulario aquí
   };
 
   return (
