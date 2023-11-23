@@ -1,25 +1,40 @@
 import React, { useState } from "react";
 import "../start.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import Navbar from "./Navbar";
 
 function Home() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const arrow = process.env.PUBLIC_URL + "/Arrow 16.svg";
   const [form, setForm] = useState({
-    type_property: "",
-    location: "",
+    categoria: "", // Inicializa las propiedades en el estado
+    localidad: "", // Inicializa las propiedades en el estado
   });
 
   const handleRadioChange = (e) => {
-    const type_property = e.target.value;
-    setForm({ ...form, type_property });
+    const categoria = e.target.value;
+    setForm({ ...form, categoria });
   };
 
   const handleTextChange = (e) => {
-    const location = e.target.value;
-    setForm({ ...form, location });
+    const localidad = e.target.value;
+    setForm({ ...form, localidad });
   };
 
   const handleSumit = (e) => {
     e.preventDefault();
+    axios
+      .get("http://localhost:5000/filter", { params: form })
+      .then((data) => {
+        dispatch({ type: "SET_PROPIEDADES", payload: data });
+        return navigate("/buscador");
+      })
+      .catch(error);
+    // Puedes hacer algo con los datos del formulario aquí
+
   };
 
   return (
