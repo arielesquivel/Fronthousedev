@@ -34,6 +34,7 @@ function Home() {
       })
       .catch(error);
     // Puedes hacer algo con los datos del formulario aquí
+
   };
 
   return (

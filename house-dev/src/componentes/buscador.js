@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "../start.css";
 import { useSelector } from "react-redux";
@@ -90,3 +91,11 @@ function Buscador() {
 }
 
 export default Buscador;
+=======
+import React from "react";
+
+function buscador() {
+  return <div>buscador</div>;
+}
+
+export default buscador;

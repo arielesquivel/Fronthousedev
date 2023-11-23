@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/me")
+      .get("http://localhost:5000/api/me", { withCredentials: true })
       .then((res) =>
         dispatch({
           type: "SET_USER",
@@ -26,6 +26,7 @@ function App() {
       )
       .catch((error) => {
         console.error(error.response.status);
+        console.error("Detalles del error:", error.response.data);
       });
   }, []);
 
@@ -35,7 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Start />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Register />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/admin/agregar" element={<VistaAgregarProps />} />
         <Route path="/propiedades" element={<VistaPropiedades />} />
