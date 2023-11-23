@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 function Register() {
   const [fromData, setFromData] = useState({
@@ -28,6 +29,7 @@ function Register() {
 
   return (
     <>
+      <Navbar />
       <div className="container">
         <div>
           <form className="login-form" onSubmit={handleRegister}>

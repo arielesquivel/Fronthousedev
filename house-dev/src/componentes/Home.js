@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../start.css";
+
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import Navbar from "./Navbar";
+
 
 function Home() {
   const navigate = useNavigate();
@@ -39,6 +41,7 @@ function Home() {
 
   return (
     <>
+      <Navbar />
       <div className="momo">
         <div className="background">
           <div className="curve-arrow">

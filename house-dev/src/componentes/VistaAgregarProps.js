@@ -1,7 +1,9 @@
 import React from "react";
+import Navbar from "./Navbar";
 function VistaAgregarProps() {
   return (
     <>
+      <Navbar />
       <div>
         <h1>Agregar Propiedad</h1>
         <form>

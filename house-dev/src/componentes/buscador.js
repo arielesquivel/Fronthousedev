@@ -93,9 +93,10 @@ function Buscador() {
 export default Buscador;
 =======
 import React from "react";
-
+import Navbar from "./Navbar";
 function buscador() {
-  return <div>buscador</div>;
+  return;
+  <></>;
 }
 
 export default buscador;
