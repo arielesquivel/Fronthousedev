@@ -1,9 +1,7 @@
 import React from "react";
-import Navbar from "./Navbar";
 function VistaPropiedades() {
   return (
     <>
-      <Navbar />
       <div className="container">
         <div className="row">
           <div className="col-md-6">
