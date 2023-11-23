@@ -1,13 +1,24 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 import axios from "axios";
+
 const set_propiedades = createAction("SET_PROPIEDADES");
 
-const inicialState = await axios.get("http://localhost:5000/properties");
+const initialState = [];
 
-const reducerPropiedades = createReducer(inicialState, {
-  [set_propiedades]: (estate, action) => {
-    return (estate = [...action.payload]);
+const reducerPropiedades = createReducer(initialState, {
+  [set_propiedades]: (state, action) => {
+    return [...action.payload];
   },
 });
 
+export const fetchPropiedades = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get("http://localhost:5000/properties");
+      dispatch(set_propiedades(response.data));
+    } catch (error) {
+      console.error("Error fetching propiedades:", error.message);
+    }
+  };
+};
 export default reducerPropiedades;

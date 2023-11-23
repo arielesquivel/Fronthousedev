@@ -1,10 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-
 import Navbar from "./Navbar";
-
-
 
 function Login() {
   const [redirect, setRedirect] = React.useState(false);

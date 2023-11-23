@@ -8,11 +8,11 @@ function VistaUsers() {
       <div className="container_3">
         <div>
           <h1>Mi prefil</h1>
-          <p>Nombre:</p>
-          <p>Apellido:</p>
-          <p>Contacto:</p>
-          <p>Email:</p>
-          <p>Contraseña:</p>
+          <p>Nombre:folanito</p>
+          <p>Apellido:Apellido</p>
+          <p>Contacto:1214564897</p>
+          <p>Email:fulanito@fulanito.com</p>
+          <p>Contraseña:fulanito</p>
           <div>
             <img src="#" alt="#"></img>
             <br />

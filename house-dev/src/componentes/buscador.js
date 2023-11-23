@@ -1,5 +1,5 @@
-
 import React, { useState } from "react";
+import axios from "axios";
 import "../start.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -40,7 +40,9 @@ function Buscador() {
       .then((data) => {
         dispatch({ type: "SET_PROPIEDADES", payload: data });
       })
-      .catch(error);
+      .catch((error) => {
+        console.log(error);
+      });
     // Puedes hacer algo con los datos del formulario aquí
   };
 
@@ -52,7 +54,7 @@ function Buscador() {
       <div className="momo">
         <div className="background">
           <div className="curve-arrow">
-            <img className="image-arrow" src={arrow} alt="arrow" />
+            <img className="#" src="#" alt="#" />
           </div>
           <div className="center-box">
             <label for="ambientes"> eliga los ambientes </label>
@@ -91,12 +93,3 @@ function Buscador() {
 }
 
 export default Buscador;
-=======
-import React from "react";
-import Navbar from "./Navbar";
-function buscador() {
-  return;
-  <></>;
-}
-
-export default buscador;
