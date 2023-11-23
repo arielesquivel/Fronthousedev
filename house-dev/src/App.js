@@ -27,7 +27,7 @@ function App() {
       .catch((error) => {
         console.error(error.response.status);
       });
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
