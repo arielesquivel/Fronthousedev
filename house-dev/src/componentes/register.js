@@ -3,27 +3,29 @@ import axios from "axios";
 import Navbar from "./Navbar";
 
 function Register() {
-  const [fromData, setFromData] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
   const [error, setError] = useState("");
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFromData({ ...fromData, [name]: value });
+    setFormData({ ...formData, [name]: value });
   };
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
         "http://localhost:5000/api/register",
-        fromData,
+        formData,
         { withCredentials: true }
       );
-      console.log("registro exitoso, ");
+      console.log("Registro exitoso", response.data);
     } catch (error) {
-      setError("error al registrarse");
+      console.error("Error en el registro:", error.message);
     }
   };
 
@@ -33,16 +35,16 @@ function Register() {
       <div className="container">
         <div>
           <form className="login-form" onSubmit={handleRegister}>
-            <h2 text-aling="center">Registrate</h2>
+            <h2 style={{ textAlign: "center" }}>Regístrate</h2>
             <div>
               <label>Email:</label>
               <br />
               <input
                 type="email"
                 name="email"
-                placeholder="coloque su email"
+                placeholder="Ingrese su email"
                 onChange={handleInputChange}
-                value={fromData.email}
+                value={formData.email}
               />
               <br />
               <label>Nombre:</label>
@@ -51,16 +53,16 @@ function Register() {
                 name="name"
                 placeholder="Nombre"
                 onChange={handleInputChange}
-                value={fromData.name}
+                value={formData.name}
               />
               <br />
               <label>Contraseña:</label>
               <input
                 type="password"
                 name="password"
-                placeholder="Coloque su contraseña"
+                placeholder="Ingrese su contraseña"
                 onChange={handleInputChange}
-                value={fromData.password}
+                value={formData.password}
               />
               <button type="submit">Registrarse</button>
             </div>

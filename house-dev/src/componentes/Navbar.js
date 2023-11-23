@@ -29,6 +29,9 @@ function Navbar() {
         <li>
           <Link to="/usuarios">Mi perfil</Link>
         </li>
+        <li>
+          <Link to="/buscador">buscar</Link>
+        </li>
       </ul>
     </>
   );

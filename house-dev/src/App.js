@@ -10,23 +10,17 @@ import VistaUsers from "./componentes/VistaUsers";
 import VistaAgregarProps from "./componentes/VistaAgregarProps";
 import VistaPropiedades from "./componentes/VistaPropiedades";
 import Register from "./componentes/register";
-import Navbar from "./componentes/Navbar";
-
+import Buscador from "./componentes/buscador";
+import { set_user } from "./store/user";
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/me", { withCredentials: true })
-      .then((res) =>
-        dispatch({
-          type: "SET_USER",
-          payload: res.data,
-        })
-      )
+      .then((res) => dispatch(set_user(res.data)))
       .catch((error) => {
-        console.error(error.response.status);
-        console.error("Detalles del error:", error.response.data);
+        console.log("Detalles del error:", error);
       });
   }, []);
 
@@ -40,6 +34,7 @@ function App() {
         <Route path="/admin/agregar" element={<VistaAgregarProps />} />
         <Route path="/propiedades" element={<VistaPropiedades />} />
         <Route path="/usuarios" element={<VistaUsers />} />
+        <Route path="/buscador" element={<Buscador />} />
       </Routes>
     </>
   );
