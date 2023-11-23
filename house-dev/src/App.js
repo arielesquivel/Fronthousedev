@@ -32,7 +32,6 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <Routes>
         <Route path="/" element={<Start />} />
         <Route path="/login" element={<Login />} />

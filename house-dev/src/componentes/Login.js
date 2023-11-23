@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import Navbar from "./Navbar";
 function Login() {
   const [redirect, setRedirect] = React.useState(false);
   const [formData, setFormData] = React.useState({
@@ -36,6 +37,7 @@ function Login() {
 
   return (
     <>
+      <Navbar />
       <div>
         <div className="container">
           <form className="login-form" onSubmit={handleLogin}>

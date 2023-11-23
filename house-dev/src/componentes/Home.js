@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../start.css";
-
+import Navbar from "./Navbar";
 function Home() {
   const arrow = process.env.PUBLIC_URL + "/Arrow 16.svg";
   const [form, setForm] = useState({
@@ -24,6 +24,7 @@ function Home() {
 
   return (
     <>
+      <Navbar />
       <div className="momo">
         <div className="background">
           <div className="curve-arrow">

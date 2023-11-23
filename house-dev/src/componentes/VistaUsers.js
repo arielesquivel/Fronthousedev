@@ -1,8 +1,10 @@
 import React from "react";
 import "../App";
+import Navbar from "./Navbar";
 function VistaUsers() {
   return (
     <>
+      <Navbar />
       <div className="container_3">
         <div>
           <h1>Mi prefil</h1>
