@@ -6,8 +6,8 @@ function VistaAgregarProps() {
     <>
       <Navbar />
       <div className="VistaAgregarProps">
-        <h1>Agregar Propiedad</h1>
-        <form>
+        <form className="form-agregar-props">
+          <h1>Agregar Propiedad</h1>
           <label htmlFor="nombrePropiedad">Nombre de la propiedad: </label>
           <input
             type="text"
