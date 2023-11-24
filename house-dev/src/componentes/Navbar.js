@@ -1,12 +1,13 @@
 import React from "react";
 import "../App.css";
+import "bootstrap";
 import { Link } from "react-router-dom";
 function Navbar() {
   return (
     <>
       <ul className="conteiner_navar">
         <li>
-          <Link to="/">star</Link>
+          <Link to="/">Star</Link>
         </li>
         <li>
           <input type="text" placeholder="¿Que Buscas?"></input>
@@ -21,16 +22,16 @@ function Navbar() {
           <Link to="/home">Home</Link>
         </li>
         <li>
-          <Link to="/admin/agregar">agregar</Link>
+          <Link to="/admin/agregar">Agregar</Link>
         </li>
         <li>
           <Link to="/propiedades">Propiedades</Link>
         </li>
         <li>
-          <Link to="/usuarios">Mi perfil</Link>
+          <Link to="/usuarios">Mi Perfil</Link>
         </li>
         <li>
-          <Link to="/buscador">buscar</Link>
+          <Link to="/buscador">Alquiler/Ventas</Link>
         </li>
       </ul>
     </>

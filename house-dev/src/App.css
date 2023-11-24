@@ -11,7 +11,7 @@ body {
 }
 .container_2 {
   width: 100%;
-  height: 300px;
+  height: 200px;
   display: flex;
   flex-shrink: 0;
   background-repeat: no-repeat;
@@ -31,9 +31,12 @@ body {
   -webkit-text-stroke: 1.5px rgb(255, 255, 255);
 }
 .container_2 p {
-  font-size: 14px;
+  font-size: 1rem;
+  font-family: "Courier New", Courier, monospace;
   font-style: normal;
   font-weight: 500;
+
+  padding-right: 3%;
   line-height: revert;
   display: flex;
   flex-direction: row-reverse;
@@ -50,17 +53,32 @@ body {
 
 .login-form {
   padding: 2%;
-  background-color: #f8f8f8;
-  border-radius: 5px;
+  background-color: #f8f8f8b3;
+  border-radius: 3%;
   width: 20%;
+}
+.login-form label {
+  font-size: 1rem;
+  font-family: "Courier New", Courier, monospace;
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"] {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 12px 2px;
+  margin: 2px 0;
   box-sizing: border-box;
+}
+.register-form {
+  padding: 2%;
+  background-color: #f8f8f8b3;
+  border-radius: 3%;
+  width: 20%;
+}
+.register-form label {
+  font-size: 1rem;
+  font-family: "Courier New", Courier, monospace;
 }
 
 button {
@@ -77,6 +95,7 @@ button {
 button:hover {
   opacity: 0.8;
 }
+/*estilos del nav*/
 .conteiner_navar {
   display: flex;
   flex-direction: row-reverse;
@@ -84,17 +103,23 @@ button:hover {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: nowrap;
-  background-color: #fe4236;
-  color: #fdfdff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  background-color: #fe4336c9;
+  color: black;
   list-style: none;
   padding: 0;
-
   margin: 0;
 }
-.conteiner_navar input {
-  border-radius: 10%;
-  font-family: "Courier New", Courier, monospace;
+a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
 }
+a:hover {
+  color: #4d4afdcc;
+} /*tipografia de color para el nav*/
+
 .container_3 {
   display: flex;
   flex-direction: row;
@@ -102,4 +127,9 @@ button:hover {
   align-content: center;
   justify-content: center;
   align-items: center;
+}
+/*VistaAgregarProps*/
+.VistaAgregarProps {
+  display: flex;
+  background-color: #f7f3ee;
 }

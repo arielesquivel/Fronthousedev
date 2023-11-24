@@ -41,7 +41,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="momo">
+      <div className="Home">
         <div className="background">
           <div className="curve-arrow">
             <img className="image-arrow" src={arrow} alt="arrow" />
