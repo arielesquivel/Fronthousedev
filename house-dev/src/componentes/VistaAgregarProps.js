@@ -1,10 +1,11 @@
 import React from "react";
 import Navbar from "./Navbar";
+import "../App.css";
 function VistaAgregarProps() {
   return (
     <>
       <Navbar />
-      <div>
+      <div className="VistaAgregarProps">
         <h1>Agregar Propiedad</h1>
         <form>
           <label htmlFor="nombrePropiedad">Nombre de la propiedad: </label>

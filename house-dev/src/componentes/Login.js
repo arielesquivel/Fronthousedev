@@ -44,9 +44,10 @@ function Login() {
           <form className="login-form" onSubmit={handleLogin}>
             <div className="container_2">
               <h1>
-                OF DEV.<p>Tu vivienda está aquí</p>
+                OF DEV.<p>Tu vivienda está aquí...</p>
               </h1>
             </div>
+
             <label>Email:</label>
             <input
               type="text"
