@@ -29,10 +29,10 @@ const Grid = (props) => {
   }, []);
   console.log(data);
   return (
-    <div className="columns is-multiline layout">
+    <div class="container">
       {data.map((data) => (
-        <div className="column is-4" key={data.id}>
-          <Card data={data} />
+        <div class="row" key={data.id}>
+          <Card data={data} class="col-4" />
         </div>
       ))}
     </div>
