@@ -51,7 +51,7 @@ function Buscador() {
       <div>
         <Navbar />
       </div>
-      <div className="momo">
+      <div className="conteiner-buscador">
         <div className="background-2">
           <div className="curve-arrow">
             <img className="#" src="#" alt="#" />

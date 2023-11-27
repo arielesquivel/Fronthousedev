@@ -178,3 +178,12 @@ a:hover {
   flex-wrap: wrap;
   align-content: flex-end;
 }
+/*vista Buscador*/
+.conteiner-buscador {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
