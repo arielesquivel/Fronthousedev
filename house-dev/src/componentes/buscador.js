@@ -52,7 +52,7 @@ function Buscador() {
         <Navbar />
       </div>
       <div className="momo">
-        <div className="background">
+        <div className="background-2">
           <div className="curve-arrow">
             <img className="#" src="#" alt="#" />
           </div>
