@@ -75,11 +75,20 @@
   justify-content: center;
   align-items: stretch;
   align-content: center;
+  padding: 2%;
+  border-radius: 5%;
+}
+.background-2 {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
   background-color: #ffffff94;
   padding: 2%;
   border-radius: 5%;
 }
-
 p {
   border-left: 0;
   border-right: 5%;

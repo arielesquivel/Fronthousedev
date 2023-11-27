@@ -5,23 +5,22 @@ function VistaUsers() {
   return (
     <>
       <Navbar />
-      <div className="container_3">
-        <div>
+      <div className="container">
+        <div className="vistaUsers">
           <h1>Mi prefil</h1>
+          <div className="img-usersperfil">
+            <img src="#" alt="#"></img>
+            <button>Cambiar</button>
+          </div>
           <p>Nombre:folanito</p>
           <p>Apellido:Apellido</p>
           <p>Contacto:1214564897</p>
           <p>Email:fulanito@fulanito.com</p>
           <p>Contraseña:fulanito</p>
-          <div>
-            <img src="#" alt="#"></img>
-            <br />
+          <div className="btn-md">
+            <button>Editar informacion</button>
           </div>
         </div>
-      </div>
-      <div className="btn-md">
-        <button>Cambiar</button>
-        <button>Editar informacion</button>
       </div>
     </>
   );

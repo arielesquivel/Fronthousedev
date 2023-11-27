@@ -42,7 +42,7 @@ function Home() {
     <>
       <Navbar />
       <div className="Home">
-        <div className="background">
+        <div className="background-2">
           <div className="curve-arrow">
             <img className="image-arrow" src={arrow} alt="arrow" />
           </div>

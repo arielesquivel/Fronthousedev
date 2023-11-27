@@ -5,17 +5,23 @@ function VistaPropiedades() {
     <>
       <Navbar />
       <div className="container">
-        <div className="row">
+        <div className="vistadepropiedades">
           <div className="col-md-6">
-            <h1 placeholder="nombre de la propiedad">Nombre de la Propiedad</h1>
-            <img src="#" alt="#" />
-            <p placeholder="Descripcion">muy buena vista al mar</p>
-            <p placeholder="Precio">$1000000</p>
-            <p placeholder="Tamaño">1000 m2</p>
-            <p placeholder="Ubicacion">Calle 10 # 10 </p>
-            <p placeholder="Tipo de Propiedad">Casa</p>
-            <p placeholder="Cantidad de dormitorios">Dormitorios</p>
-            <p placeholder="Cantidad de baños">Baños</p>
+            <div className="img-vistadepropiedades">
+              <img src="#" alt="#" />
+              <div>
+                <h1 placeholder="nombre de la propiedad">Alquiler/Venta</h1>
+                <p placeholder="Descripcion">
+                  Descripcion: muy buena vista al mar
+                </p>
+                <p placeholder="Precio">Precio:$1000000</p>
+                <p placeholder="Tamaño">Metros:1000 m2</p>
+                <p placeholder="Ubicacion">Ubicacion:Calle 10 # 10 </p>
+                <p placeholder="Tipo de Propiedad">Tipo:Casa</p>
+                <p placeholder="Cantidad de dormitorios">Dormitorios:2</p>
+                <p placeholder="Cantidad de baños">Baños:3</p>
+              </div>
+            </div>
             <button type="submit" class="btn btn-primary">
               Reservar visita
             </button>

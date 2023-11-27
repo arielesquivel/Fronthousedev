@@ -146,3 +146,35 @@ a:hover {
   align-items: stretch;
   justify-content: center;
 }
+/*vista de propiedades*/
+.vistadepropiedades {
+  background-color: #f7f3eeb6;
+  padding: 4%;
+}
+.img-vistadepropiedades {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+/*Vista Users*/
+.vistaUsers {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  background-color: #f7f3eeb6;
+  padding: 4.1% 15%;
+}
+.img-usersperfil {
+  padding-left: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
