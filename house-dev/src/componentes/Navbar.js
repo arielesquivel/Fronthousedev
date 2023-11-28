@@ -1,8 +1,24 @@
 import React from "react";
 import "../App.css";
 import "bootstrap";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      // Realiza la solicitud de cierre de sesión al servidor
+      await axios.post("http://localhost:5000/api/logout", null, {
+        withCredentials: true,
+      });
+
+      // Después de cerrar sesión, redirige a la página de inicio de sesión
+      navigate("/home");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error.message);
+    }
+  };
   return (
     <>
       <ul className="conteiner_navar">
@@ -32,6 +48,9 @@ function Navbar() {
         </li>
         <li>
           <Link to="/buscador">Alquiler/Ventas</Link>
+        </li>
+        <li onClick={handleLogout} type="button" class="btn btn-primary">
+          <Link>Logout</Link>
         </li>
       </ul>
     </>
