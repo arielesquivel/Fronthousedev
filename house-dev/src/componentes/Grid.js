@@ -29,10 +29,10 @@ const Grid = (props) => {
   }, []);
   console.log(data);
   return (
-    <div class="container">
+    <div class="container-grip">
       {data.map((data) => (
-        <div class="row" key={data.id}>
-          <Card data={data} class="col-4" />
+        <div className="container-item-grip" key={data.id}>
+          <Card data={data} />
         </div>
       ))}
     </div>
