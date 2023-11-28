@@ -14,9 +14,10 @@ function VistaAgregarProps() {
   });
   const handleA = (e) => {
     e.preventDefault();
-    const ambiente = ambientes.dormitorios + ambientes.baños;
+    const ambiente =
+      parseInt(ambientes.dormitorios) + parseInt(ambientes.baños);
     const payload = {
-      categoria: form.tipo,
+      categoria: form.tipo || "casa",
       ambientes: ambiente,
       disponibilidad: true,
       direccion: form.direccion,
