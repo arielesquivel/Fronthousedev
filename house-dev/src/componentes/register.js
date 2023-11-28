@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ function Register() {
     password: "",
   });
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -24,6 +25,7 @@ function Register() {
         { withCredentials: true }
       );
       console.log("Registro exitoso", response.data);
+      navigate("/login");
     } catch (error) {
       console.error("Error en el registro:", error.message);
     }

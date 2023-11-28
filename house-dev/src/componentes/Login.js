@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 function Login() {
@@ -10,7 +10,7 @@ function Login() {
     password: "",
   });
   const [error, setError] = React.useState("");
-
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -26,7 +26,7 @@ function Login() {
         { withCredentials: true }
       );
       console.log("Inicio de sesión exitosa", response.data);
-      setRedirect(true);
+      navigate("/home");
     } catch (error) {
       if (error.response && error.response.status === 401) {
         setError("Usuario o contraseña incorrecta");
