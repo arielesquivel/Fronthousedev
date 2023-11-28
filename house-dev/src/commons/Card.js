@@ -2,7 +2,11 @@ const Card = ({ data }) => {
   return (
     <div className="card">
       <img
-        src={data?.image ? data.image : "https://i.imgur.com/M1wbKOT.jpg"}
+        src={
+          data?.image
+            ? data.image
+            : "https://www.esneca.lat/wp-content/uploads/disen%CC%83o-interior.jpg"
+        }
         alt="Placeholder image"
       />
 
