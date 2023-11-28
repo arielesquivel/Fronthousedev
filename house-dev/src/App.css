@@ -192,7 +192,7 @@ a:hover {
   display: flex;
   justify-items: stretch;
   padding: 0%;
-  width: 95%;
+  width: 100%;
   background-color: #f7f3eeb6;
   height: auto;
   flex-direction: row;
@@ -205,7 +205,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   border: 0%;
   margin: 0%;
   padding: 0%;
@@ -213,5 +213,15 @@ a:hover {
   align-content: center;
 }
 .card img {
-  width: 50%;
+  width: 60%;
+}
+/*conteiner grip  */
+.container-grip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20%, 2fr));
+  grid-gap: 10%;
+}
+.container-item-grip {
+  padding: 3%;
+  text-align: center;
 }
