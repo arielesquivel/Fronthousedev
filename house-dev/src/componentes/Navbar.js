@@ -40,9 +40,9 @@ function Navbar() {
         <li>
           <Link to="/admin/agregar">Agregar</Link>
         </li>
-        <li>
-          <Link to="/propiedades">Propiedades</Link>
-        </li>
+        {/* <li>
+          <Link to="/favoritos">Favoritos</Link>
+        </li>*/}
         <li>
           <Link to="/usuarios">Mi Perfil</Link>
         </li>
