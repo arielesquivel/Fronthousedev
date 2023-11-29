@@ -149,6 +149,7 @@ a:hover {
 /*vista de propiedades*/
 .vistadepropiedades {
   background-color: #f7f3eeb6;
+  width: 80%;
   padding: 0%;
   display: flex;
   flex-direction: row;
@@ -166,8 +167,6 @@ a:hover {
 }
 /*calendario*/
 .calendario-conteiner {
-  background-color: #fa9487b6;
-
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
