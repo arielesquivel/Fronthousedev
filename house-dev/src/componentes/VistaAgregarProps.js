@@ -1,9 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import "../App.css";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
 import { useState } from "react";
 import axios from "axios";
 function VistaAgregarProps() {
@@ -79,12 +76,12 @@ function VistaAgregarProps() {
       <div className="VistaAgregarProps">
         <form className="form-agregar-props" onSubmit={handleA}>
           <h1>Agregar Propiedad</h1>
-          <label htmlFor="nombrePropiedad">Nombre de la propiedad: </label>
+          <label htmlFor="Alquiler / venta">Alquiler/Venta</label>
           <input
             type="text"
             name="nombrePropiedad"
             id="nombre"
-            placeholder="Nombre"
+            placeholder="Alquiler /venta"
             onChange={handleB}
           />
           <label htmlFor="direccion">Dirección: </label>
@@ -114,19 +111,22 @@ function VistaAgregarProps() {
             placeholder="$USD"
             onChange={handleB}
           />
-          <label htmlFor="tipo">alquilar o vender </label>
-          <label>alquilar</label>
-          <input
-            type="checkbox"
-            checked={isCheckedAlquilar}
-            onChange={handleCheckboxChangeAlquilar}
-          />
-          <label>vender</label>
-          <input
-            type="checkbox"
-            checked={isCheckedVender}
-            onChange={handleCheckboxChangeVender}
-          />
+          <label htmlFor="tipo">
+            <label>
+              Alquilar
+              <input
+                type="checkbox"
+                checked={isCheckedAlquilar}
+                onChange={handleCheckboxChangeAlquilar}
+              />
+            </label>
+            <label>vender</label>
+            <input
+              type="checkbox"
+              checked={isCheckedVender}
+              onChange={handleCheckboxChangeVender}
+            />
+          </label>
           <label htmlFor="tipo">Tipo de propiedad: </label>
           <select name="tipo" id="tipo" onChange={handleB}>
             <option>Casa</option>
@@ -161,10 +161,10 @@ function VistaAgregarProps() {
             name="metraje"
             onChange={handleB}
           />
-          <label htmlFor="img">Imagenes :</label>
-          <input type="file" multiple accept=".jpg,.png, .jpeg" />
           <label type="contacto">Contacto</label>
           <input name="contacto" placeholder="Ingrese su numero de contacto" />
+          <label htmlFor="img">Imagenes :</label>
+          <input type="file" multiple accept=".jpg,.png, .jpeg" />
           <button type="submit">Publicar Propiedad</button>
         </form>
       </div>
