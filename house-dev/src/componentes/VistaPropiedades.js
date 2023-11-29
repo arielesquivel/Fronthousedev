@@ -1,4 +1,5 @@
 import React from "react";
+import "react-calendar/dist/Calendar.css";
 import Navbar from "./Navbar";
 import Calendar from "./Calendar";
 function VistaPropiedades() {
