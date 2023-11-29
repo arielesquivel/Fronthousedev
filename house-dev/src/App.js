@@ -34,7 +34,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/admin/agregar" element={<VistaAgregarProps />} />
-        <Route path="/propiedades" element={<VistaPropiedades />} />
         <Route path="/usuarios" element={<VistaUsers />} />
         <Route path="/buscador" element={<Buscador />} />
         <Route path="users/:id/*" element={<VistaUsers />} />
