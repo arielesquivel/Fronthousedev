@@ -12,7 +12,6 @@ import VistaPropiedades from "./componentes/VistaPropiedades";
 import Register from "./componentes/register";
 import Buscador from "./componentes/buscador";
 import { set_user } from "./store/user";
-import VistaUsers from "./componentes/VistaUsers";
 import NotFound from "./commons/NotFound";
 
 function App() {
