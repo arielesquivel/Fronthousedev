@@ -1,4 +1,5 @@
 import React from "react";
+import "react-calendar/dist/Calendar.css";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
