@@ -12,27 +12,47 @@ function VistaAgregarProps() {
     dormitorios: 0,
     baños: 0,
   });
+  const [isCheckedAlquilar, setCheckedAlquilar] = useState(false);
+  const [isCheckedVender, setCheckedVender] = useState(false);
+
+  const handleCheckboxChangeAlquilar = () => {
+    setCheckedAlquilar(!isCheckedAlquilar);
+  };
+  const handleCheckboxChangeVender = () => {
+    setCheckedVender(!isCheckedVender);
+  };
+
   const handleA = (e) => {
     e.preventDefault();
     const ambiente =
       parseInt(ambientes.dormitorios) + parseInt(ambientes.baños);
     const payload = {
+      nombre: form.nombrePropiedad,
+      alquilar: isCheckedAlquilar,
+      vender: isCheckedVender,
       categoria: form.tipo || "casa",
       ambientes: ambiente,
+      baños: parseInt(ambientes.baños),
+      dormitorios: parseInt(ambientes.dormitorios),
       disponibilidad: true,
       direccion: form.direccion,
       localidad: "cacsa",
       localizacion: "ascac",
-      precio: form.precio,
+      precio: parseInt(form.precio),
+      metraje: parseInt(form.metraje),
       description: form.descripcion,
     };
 
     if (
+      !payload.nombre ||
       !payload.categoria ||
       !payload.ambientes ||
       !payload.direccion ||
       !payload.precio ||
-      !payload.description
+      !payload.description ||
+      (!payload.alquilar && !payload.vender) ||
+      !payload.baños ||
+      !payload.dormitorios
     ) {
       alert("datos incorrectos");
     } else {
@@ -94,6 +114,19 @@ function VistaAgregarProps() {
             placeholder="$USD"
             onChange={handleB}
           />
+          <label htmlFor="tipo">alquilar o vender </label>
+          <label>alquilar</label>
+          <input
+            type="checkbox"
+            checked={isCheckedAlquilar}
+            onChange={handleCheckboxChangeAlquilar}
+          />
+          <label>vender</label>
+          <input
+            type="checkbox"
+            checked={isCheckedVender}
+            onChange={handleCheckboxChangeVender}
+          />
           <label htmlFor="tipo">Tipo de propiedad: </label>
           <select name="tipo" id="tipo" onChange={handleB}>
             <option>Casa</option>
@@ -120,7 +153,14 @@ function VistaAgregarProps() {
             onChange={handleC}
           />
           <label htmlFor="tipo">Metros cuadrados: </label>
-          <input type="number" min="0" max="999999" placeholder="Mts" />
+          <input
+            type="number"
+            min="0"
+            max="999999"
+            placeholder="Mts"
+            name="metraje"
+            onChange={handleB}
+          />
           <label htmlFor="img">Imagenes :</label>
           <input type="file" multiple accept=".jpg,.png, .jpeg" />
           <label type="contacto">Contacto</label>

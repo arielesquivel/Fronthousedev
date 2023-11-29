@@ -12,6 +12,9 @@ import VistaPropiedades from "./componentes/VistaPropiedades";
 import Register from "./componentes/register";
 import Buscador from "./componentes/buscador";
 import { set_user } from "./store/user";
+import VistaUsers from "./componentes/VistaUsers";
+import NotFound from "./commons/NotFound";
+
 function App() {
   const dispatch = useDispatch();
 
@@ -35,6 +38,9 @@ function App() {
         <Route path="/propiedades" element={<VistaPropiedades />} />
         <Route path="/usuarios" element={<VistaUsers />} />
         <Route path="/buscador" element={<Buscador />} />
+        <Route path="users/:id/*" element={<VistaUsers />} />
+        <Route path="propiedades/:id/*" element={<VistaPropiedades />} />
+        <Route path="404" element={<NotFound />} />
       </Routes>
     </>
   );
