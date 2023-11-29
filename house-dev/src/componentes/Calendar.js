@@ -6,11 +6,14 @@ let ValuePiece = Date | null;
 let Value = ValuePiece | [ValuePiece, ValuePiece];
 
 function Calendario() {
-  const [value, onChange] = useState(new Date());
-
+  const [data, setData] = useState(new Date());
+  const onChange = (data) => {
+    setData(data);
+  };
   return (
     <div>
-      <Calendar onChange={onChange} value={value} />
+      <Calendar onChange={onChange} value={data} />
+      {console.log(data)}
     </div>
   );
 }
