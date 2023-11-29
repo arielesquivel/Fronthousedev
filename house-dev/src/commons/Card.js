@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Navigate, Route, Routes } from "react-router";
+
 const Card = ({ data }) => {
   return (
     <div className="card">
@@ -14,8 +18,9 @@ const Card = ({ data }) => {
         <p>Localidad: {data?.localidad}</p>
         <p>Precio: {data?.precio}</p>
         <p>Ambientes: {data?.ambientes}</p>
-
-        <button>ver mas</button>
+        <Link to={`/propiedades/${data.id}`}>
+          <button>ver mas</button>
+        </Link>
       </div>
     </div>
   );
