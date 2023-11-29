@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
 import { useParams, useNavigate } from "react-router";
-
+import Calendar from "./Calendar";
 function VistaPropiedades() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -25,9 +25,9 @@ function VistaPropiedades() {
   return (
     <>
       <Navbar />
-      <div className="container">
+      <div>
         <div className="vistadepropiedades">
-          <div className="col-md-6">
+          <div className="col-md-2">
             <div className="img-vistadepropiedades">
               <img src="#" alt="#" />
               <div>
@@ -44,9 +44,11 @@ function VistaPropiedades() {
             <button type="submit" class="btn btn-primary">
               Reservar visita
             </button>
-            <button type="submit" class="btn btn-primary">
-              Comprar
-            </button>
+            <div className="calendario-conteiner">
+              <div className="calendario">
+                <Calendar />
+              </div>
+            </div>
           </div>
         </div>
       </div>
