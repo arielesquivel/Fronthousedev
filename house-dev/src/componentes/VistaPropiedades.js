@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import Calendar from "./Calendar";
 function VistaPropiedades() {
   return (
     <>
@@ -25,9 +26,9 @@ function VistaPropiedades() {
             <button type="submit" class="btn btn-primary">
               Reservar visita
             </button>
-            <button type="submit" class="btn btn-primary">
-              Comprar
-            </button>
+            <div className="calendario">
+              <Calendar />
+            </div>
           </div>
         </div>
       </div>

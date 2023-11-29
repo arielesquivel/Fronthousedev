@@ -225,3 +225,9 @@ a:hover {
   padding: 3%;
   text-align: center;
 }
+/*calendario*/
+
+.calendario {
+  display: flex;
+  width: 50%;
+}
