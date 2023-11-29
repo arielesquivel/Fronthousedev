@@ -5,9 +5,9 @@ function VistaPropiedades() {
   return (
     <>
       <Navbar />
-      <div className="container">
+      <div>
         <div className="vistadepropiedades">
-          <div className="col-md-6">
+          <div className="col-md-2">
             <div className="img-vistadepropiedades">
               <img src="#" alt="#" />
               <div>
@@ -26,8 +26,10 @@ function VistaPropiedades() {
             <button type="submit" class="btn btn-primary">
               Reservar visita
             </button>
-            <div className="calendario">
-              <Calendar />
+            <div className="calendario-conteiner">
+              <div className="calendario">
+                <Calendar />
+              </div>
             </div>
           </div>
         </div>

@@ -149,12 +149,38 @@ a:hover {
 /*vista de propiedades*/
 .vistadepropiedades {
   background-color: #f7f3eeb6;
-  padding: 4%;
+  padding: 0%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 .img-vistadepropiedades {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+/*calendario*/
+.calendario-conteiner {
+  background-color: #fa9487b6;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+.calendario {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 50%;
+  align-content: center;
   align-items: center;
   flex-wrap: nowrap;
 }
@@ -224,10 +250,4 @@ a:hover {
 .container-item-grip {
   padding: 3%;
   text-align: center;
-}
-/*calendario*/
-
-.calendario {
-  display: flex;
-  width: 50%;
 }
