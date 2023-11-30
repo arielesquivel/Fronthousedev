@@ -21,46 +21,56 @@ function VistaPropiedades() {
       });
   }, []);
 
-  if (!data.id) return <h3>No hay datos</h3>;
+  if (!data.id) {
+    return (
+      <>
+        <Navbar />
+        <div>
+          <h3>No hay datos</h3>
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Navbar />
+        <div>
+          <div className="img-vistadepropiedades">
+            <img
+              src="https://www.esneca.lat/wp-content/uploads/disen%CC%83o-interior.jpg"
+              alt="foto1"
+            />
+            <div>
+              <div className="vistadepropiedades">
+                <div className="col-md-2">
+                  <h1 placeholder="nombre de la propiedad">{data.nombre}</h1>
+                  <p placeholder="Descripcion">
+                    Descripcion: {data.description}
+                  </p>
+                  <p placeholder="Precio">Precio: US$ {data.precio}</p>
+                  <p placeholder="Tamaño">Tamaño: {data.metraje}</p>
+                  <p placeholder="Ubicacion">Ubicacion: {data.direccion}</p>
 
-  return (
-    <>
-      <Navbar />
-      <div>
-        <div className="img-vistadepropiedades">
-          <img
-            src="https://www.esneca.lat/wp-content/uploads/disen%CC%83o-interior.jpg"
-            alt="foto1"
-          />
-          <div>
-            <div className="vistadepropiedades">
-              <div className="col-md-2">
-                <h1 placeholder="nombre de la propiedad">{data.nombre}</h1>
-                <p placeholder="Descripcion">Descripcion: {data.description}</p>
-                <p placeholder="Precio">Precio: US$ {data.precio}</p>
-                <p placeholder="Tamaño">Tamaño: {data.metraje}</p>
-                <p placeholder="Ubicacion">Ubicacion: {data.direccion}</p>
-
-                <p placeholder="Tipo de Propiedad">Tipo:{data.categoria}</p>
-                <p placeholder="Cantidad de dormitorios">
-                  Dormitorios: {data.dormitorios}
-                </p>
-                <p placeholder="Cantidad de baños">Baños: {data.baños}</p>
+                  <p placeholder="Tipo de Propiedad">Tipo:{data.categoria}</p>
+                  <p placeholder="Cantidad de dormitorios">
+                    Dormitorios: {data.dormitorios}
+                  </p>
+                  <p placeholder="Cantidad de baños">Baños: {data.baños}</p>
+                </div>
+                <button type="submit" className="btn">
+                  Reservar visita
+                </button>
               </div>
-              <button type="submit" className="btn">
-                Reservar visita
-              </button>
-            </div>
-            <div className="calendario-conteiner">
-              <div className="calendario">
-                <Calendar />
+              <div className="calendario-conteiner">
+                <div className="calendario">
+                  <Calendar prop={data.id} />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
-
 export default VistaPropiedades;
