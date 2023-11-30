@@ -51,42 +51,7 @@ function Buscador() {
       <div>
         <Navbar />
       </div>
-      <div className="conteiner-buscador">
-        <div className="background-2">
-          <div className="curve-arrow">
-            <img className="#" src="#" alt="#" />
-          </div>
-          <div className="center-box">
-            <label for="ambientes"> eliga los ambientes </label>
-            <select name="options" onChange={handleAmbientesChange}>
-              <option value={1}>un ambiente</option>
-              <option value={2}>dos ambiente</option>
-              <option value={3}>tres ambiente</option>
-              <option value={4}>cuatro ambiente</option>
-              <option value={5}>cinco ambiente</option>
-            </select>
-            <label>
-              <input
-                type="text"
-                placeholder="Ubicacion"
-                onChange={handleTextChange}
-              />
-              unbicacion
-            </label>
-            <label>
-              <input
-                type="number"
-                placeholder="precio"
-                onChange={handlePrecioChange}
-              />
-              precio
-            </label>
-            <button onClick={handleSumit} className="btn btn-primary">
-              Buscar
-            </button>
-          </div>
-        </div>
-      </div>
+
       <Grid />
     </>
   );

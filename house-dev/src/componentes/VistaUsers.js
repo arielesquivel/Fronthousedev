@@ -16,7 +16,8 @@ function VistaUsers() {
       })
       .then((res) => res.data)
       .then((data) => setData(data))
-      .catch(() => {
+      .catch((error) => {
+        console.log("°°°°°°°°°°°°°°°°°°", error);
         navigate("/404");
       });
   }, []);
@@ -43,10 +44,10 @@ function VistaUsers() {
               <button>Cambiar</button>
             </div>
             <p>Nombre:{data.name}</p>
-            <p>Apellido:Apellido/hay que ver esto</p>
-            <p>Contacto:1214564897/hay que ver esto</p>
+            <p>Apellido:{data.lastName}</p>
+            <p>Contacto:{data.contact}</p>
             <p>Email:{data.email}</p>
-            <p>Contraseña:fulanito/hay que ver esto</p>
+            <p>Contraseña:{data.password}</p>
             <div className="btn-md">
               <button>Editar informacion</button>
             </div>

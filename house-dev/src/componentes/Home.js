@@ -10,25 +10,43 @@ function Home() {
   const dispatch = useDispatch();
   const arrow = process.env.PUBLIC_URL + "/Arrow 16.svg";
   const [form, setForm] = useState({
-    categoria: "", // Inicializa las propiedades en el estado
-    localidad: "", // Inicializa las propiedades en el estado
+    alquilar: false,
+    vender: false,
+    //localidad: "", // Inicializa las propiedades en el estado
   });
 
+  const [isCheckedAlquilar, setCheckedAlquilar] = useState(false);
+  const [isCheckedVender, setCheckedVender] = useState(false);
+
+  const handleCheckboxChangeAlquilar = () => {
+    setCheckedAlquilar(!isCheckedAlquilar);
+  };
+  const handleCheckboxChangeVender = () => {
+    setCheckedVender(!isCheckedVender);
+  };
+
+  /*
   const handleRadioChange = (e) => {
     const categoria = e.target.value;
     setForm({ ...form, categoria });
   };
-
+*/
+  /*
   const handleTextChange = (e) => {
     const localidad = e.target.value;
     setForm({ ...form, localidad });
   };
-
+*/
   const handleSumit = (e) => {
     e.preventDefault();
+    const alquilar = isCheckedAlquilar;
+    const vender = isCheckedVender;
+    setForm((form.alquilar = alquilar), (form.vender = vender));
+    //setForm((form.vender = vender));
     axios
-      .get("http://localhost:5000/filter", { params: form })
+      .get("http://localhost:5000/api/filter", { params: form })
       .then((data) => {
+        console.log(data);
         dispatch({ type: "SET_PROPIEDADES", payload: data });
         return navigate("/buscador");
       })
@@ -47,32 +65,24 @@ function Home() {
             <img className="image-arrow" src={arrow} alt="arrow" />
           </div>
           <div className="center-box">
-            <label>
+            <label htmlFor="tipo">
+              <label>
+                Alquilar
+                <input
+                  type="checkbox"
+                  checked={isCheckedAlquilar}
+                  onChange={handleCheckboxChangeAlquilar}
+                />
+              </label>
+              <label>vender</label>
               <input
-                type="radio"
-                value="alquilar"
-                checked={form.type_property === "alquilar"}
-                onChange={handleRadioChange}
-              />
-              Comprar
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="comprar"
-                checked={form.type_property === "comprar"}
-                onChange={handleRadioChange}
-              />
-              Alquilar
-            </label>
-            <label>
-              <input
-                type="text"
-                placeholder="Ubicacion"
-                onChange={handleTextChange}
+                type="checkbox"
+                checked={isCheckedVender}
+                onChange={handleCheckboxChangeVender}
               />
             </label>
-            <button onClick={handleSumit} className="btn btn-primary">
+
+            <button onClick={handleSumit} className="btn">
               Buscar
             </button>
           </div>

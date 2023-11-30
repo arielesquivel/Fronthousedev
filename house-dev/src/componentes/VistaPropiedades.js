@@ -57,9 +57,6 @@ function VistaPropiedades() {
                   </p>
                   <p placeholder="Cantidad de baños">Baños: {data.baños}</p>
                 </div>
-                <button type="submit" className="btn">
-                  Reservar visita
-                </button>
               </div>
               <div className="calendario-conteiner">
                 <div className="calendario">
