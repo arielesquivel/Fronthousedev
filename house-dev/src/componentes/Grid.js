@@ -16,7 +16,8 @@ const Grid = (props) => {
   const propiedades = useSelector((state) => {
     return state.propiedades;
   });
-
+  let datas = [];
+  console.log(propiedades);
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/properties", {
@@ -27,10 +28,16 @@ const Grid = (props) => {
         console.log("Detalles del error:", error);
       });
   }, []);
-  console.log(data);
+
+  console.log("1234321!", data);
+  if (propiedades.length < 1) {
+    datas = data;
+  } else {
+    datas = propiedades;
+  }
   return (
     <div class="container-grip">
-      {data.map((data) => (
+      {datas.map((data) => (
         <div className="container-item-grip" key={data.id}>
           <Card data={data} />
         </div>

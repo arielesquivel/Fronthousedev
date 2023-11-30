@@ -7,7 +7,9 @@ const initialState = [];
 
 const reducerPropiedades = createReducer(initialState, {
   [set_propiedades]: (state, action) => {
-    return [...action.payload];
+    console.log(state);
+
+    return action.payload.data;
   },
 });
 

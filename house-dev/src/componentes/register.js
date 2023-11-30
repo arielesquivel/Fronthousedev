@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
+    name: "",
+    lastName: "",
+    contact: "",
     password: "",
   });
   const [error, setError] = useState("");
@@ -19,6 +21,10 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      console.log(
+        "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+        formData
+      );
       const response = await axios.post(
         "http://localhost:5000/api/register",
         formData,
@@ -61,6 +67,24 @@ function Register() {
             value={formData.name}
           />
 
+          <label>Apellido:</label>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Apellido"
+            onChange={handleInputChange}
+            value={formData.lastName}
+          />
+
+          <label>Contacto:</label>
+          <input
+            type="text"
+            name="contact"
+            placeholder="Contacto"
+            onChange={handleInputChange}
+            value={formData.contact}
+          />
+
           <label>Contraseña:</label>
           <input
             type="password"
@@ -69,6 +93,7 @@ function Register() {
             onChange={handleInputChange}
             value={formData.password}
           />
+
           <button type="submit">Registrarse</button>
         </form>
       </div>
