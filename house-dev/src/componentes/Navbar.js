@@ -22,11 +22,9 @@ function Navbar() {
 
   return (
     <>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg  custom-navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            HOD.
-          </a>
+          <a class="navbar-brand">HOD.</a>
           <li></li>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">

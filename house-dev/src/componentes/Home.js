@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../start.css";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
@@ -59,7 +58,7 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="Home">
+      <div className="Home1">
         <div className="background-2">
           <div className="curve-arrow">
             <img className="image-arrow" src={arrow} alt="arrow" />
