@@ -2,8 +2,11 @@ import React from "react";
 import axios from "axios";
 import { Redirect, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import { useDispatch } from "react-redux";
+import { set_user } from "../store/user";
 
 function Login() {
+  const dispatch = useDispatch();
   const [redirect, setRedirect] = React.useState(false);
   const [formData, setFormData] = React.useState({
     email: "",
@@ -25,7 +28,9 @@ function Login() {
         formData,
         { withCredentials: true }
       );
+      console.log(response);
       console.log("Inicio de sesión exitosa", response.data);
+      dispatch(set_user(response.data));
       navigate("/home");
     } catch (error) {
       if (error.response && error.response.status === 401) {
