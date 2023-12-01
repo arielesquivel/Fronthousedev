@@ -19,39 +19,80 @@ function Navbar() {
       console.error("Error al cerrar sesión:", error.message);
     }
   };
+
   return (
     <>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            HOD.
+          </a>
+          <li></li>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <Link class="nav-link active" aria-current="page" to="/">
+                  Star
+                </Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/buscador">
+                  Alquiler/Ventas
+                </Link>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Ver mas
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <Link class="dropdown-item" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/register">
+                      Registrate
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/admin/agregar" class="dropdown-item">
+                      Agregar
+                    </Link>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/home">
+                      Home
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <Link to="/usuarios" class="nav-link " aria-disabled="true">
+                  Mi Perfil
+                </Link>
+              </li>
+            </ul>
+
+            <button onClick={handleLogout} class="btn btn-outline-success">
+              <Link>Logout</Link>
+            </button>
+          </div>
+        </div>
+      </nav>
       <ul className="conteiner_navar">
-        <li>
-          <Link to="/">Star</Link>
-        </li>
-        <li>
-          <input type="text" placeholder="¿Que Buscas?"></input>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/register">Registrate</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-        <li>
-          <Link to="/admin/agregar">Agregar</Link>
-        </li>
         {/* <li>
           <Link to="/favoritos">Favoritos</Link>
         </li>*/}
-        <li>
-          <Link to="/usuarios">Mi Perfil</Link>
-        </li>
-        <li>
-          <Link to="/buscador">Alquiler/Ventas</Link>
-        </li>
-        <li onClick={handleLogout} type="button" class="btn btn-primary">
-          <Link>Logout</Link>
-        </li>
       </ul>
     </>
   );
