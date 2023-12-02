@@ -36,9 +36,9 @@ const Grid = (props) => {
     datas = propiedades;
   }
   return (
-    <div class="container-grip">
+    <div class="row">
       {datas.map((data) => (
-        <div className="container-item-grip" key={data.id}>
+        <div class="col-md-6" key={data.id}>
           <Card data={data} />
         </div>
       ))}
