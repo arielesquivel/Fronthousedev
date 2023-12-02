@@ -45,7 +45,7 @@ function Login() {
     <>
       <Navbar />
       <div>
-        <div className="container">
+        <div class="container">
           <form className="login-form" onSubmit={handleLogin}>
             <div className="container_2">
               <h1>

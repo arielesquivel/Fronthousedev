@@ -21,16 +21,12 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      console.log(
-        "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
-        formData
-      );
       const response = await axios.post(
         "http://localhost:5000/api/register",
         formData,
         { withCredentials: true }
       );
-      console.log("Registro exitoso", response.data);
+      console.log("Registro exitoso");
       navigate("/login");
     } catch (error) {
       console.error("Error en el registro:", error.message);
@@ -40,62 +36,64 @@ function Register() {
   return (
     <>
       <Navbar />
-      <div className="container">
-        <form className="register-form" onSubmit={handleRegister}>
-          <div className="container_2">
-            <h1>
-              OF DEV.<p>Ingrese sus Datos...</p>
-            </h1>
-          </div>
+      <div>
+        <div class="conteiner conteiner-register">
+          <form className="register-form" onSubmit={handleRegister}>
+            <div className="container_2">
+              <h1>
+                OF DEV.<p>Ingrese sus Datos...</p>
+              </h1>
+            </div>
 
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Ingrese su email"
-            onChange={handleInputChange}
-            value={formData.email}
-            required
-          />
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Ingrese su email"
+              onChange={handleInputChange}
+              value={formData.email}
+              required
+            />
 
-          <label>Nombre:</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Nombre"
-            onChange={handleInputChange}
-            value={formData.name}
-          />
+            <label>Nombre:</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Nombre"
+              onChange={handleInputChange}
+              value={formData.name}
+            />
 
-          <label>Apellido:</label>
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Apellido"
-            onChange={handleInputChange}
-            value={formData.lastName}
-          />
+            <label>Apellido:</label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Apellido"
+              onChange={handleInputChange}
+              value={formData.lastName}
+            />
 
-          <label>Contacto:</label>
-          <input
-            type="text"
-            name="contact"
-            placeholder="Contacto"
-            onChange={handleInputChange}
-            value={formData.contact}
-          />
+            <label>Contacto:</label>
+            <input
+              type="text"
+              name="contact"
+              placeholder="Contacto"
+              onChange={handleInputChange}
+              value={formData.contact}
+            />
 
-          <label>Contraseña:</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Ingrese su contraseña"
-            onChange={handleInputChange}
-            value={formData.password}
-          />
+            <label>Contraseña:</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Ingrese su contraseña"
+              onChange={handleInputChange}
+              value={formData.password}
+            />
 
-          <button type="submit">Registrarse</button>
-        </form>
+            <button type="submit">Registrarse</button>
+          </form>
+        </div>
       </div>
     </>
   );

@@ -58,30 +58,31 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="Home1">
-        <div className="background-2">
-          <div className="curve-arrow">
-            <img className="image-arrow" src={arrow} alt="arrow" />
-          </div>
-          <div className="center-box">
-            <label htmlFor="tipo">
-              <label>
-                Alquilar
+      <div class="conteiner">
+        <div className="home">
+          <div className="background-2">
+            <div className="curve-arrow">
+              <img className="image-arrow" src={arrow} alt="arrow" />
+            </div>
+            <div className="center-box">
+              <label htmlFor="tipo">
+                <label>
+                  Alquilar
+                  <input
+                    type="checkbox"
+                    checked={isCheckedAlquilar}
+                    onChange={handleCheckboxChangeAlquilar}
+                  />
+                </label>
+                <label>vender</label>
                 <input
                   type="checkbox"
-                  checked={isCheckedAlquilar}
-                  onChange={handleCheckboxChangeAlquilar}
+                  checked={isCheckedVender}
+                  onChange={handleCheckboxChangeVender}
                 />
               </label>
-              <label>vender</label>
-              <input
-                type="checkbox"
-                checked={isCheckedVender}
-                onChange={handleCheckboxChangeVender}
-              />
-            </label>
-
-            <button onClick={handleSumit} className="btn">
+            </div>
+            <button onClick={handleSumit} className="btn btn-primary">
               Buscar
             </button>
           </div>

@@ -51,7 +51,6 @@ function Buscador() {
       <div>
         <Navbar />
       </div>
-
       <Grid />
     </>
   );
