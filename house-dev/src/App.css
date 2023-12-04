@@ -8,6 +8,20 @@ body {
   padding: 0;
   height: 20%;
   width: auto;
+} /*OD. diseño*/
+.od {
+  font-weight: bold;
+  color: transparent;
+  -webkit-text-stroke: 0.5px rgb(255, 255, 255);
+}
+/*p mesaje de bienvenida*/
+.mensP {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row-reverse;
 }
 /*login y reister diseños*/
 .container_2 {
