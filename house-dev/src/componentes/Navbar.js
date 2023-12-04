@@ -38,7 +38,7 @@ function Navbar() {
       <nav class={`navbar navbar-expand-lg ${complement_1}`}>
         <div class="container-fluid">
           <a class="navbar-brand">HOD.</a>
-          <li></li>
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -95,11 +95,13 @@ function Navbar() {
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <Link to="/usuarios" class="nav-link " aria-disabled="true">
-                  Mi Perfil
-                </Link>
-              </li>
+              {user.rol && (
+                <li class="nav-item">
+                  <Link to="/usuarios" class="nav-link " aria-disabled="true">
+                    Mi Perfil
+                  </Link>
+                </li>
+              )}
             </ul>
             {user.rol && (
               <>
@@ -111,11 +113,10 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <ul className="conteiner_navar">
-        {/* <li>
+
+      {/* <li>
           <Link to="/favoritos">Favoritos</Link>
         </li>*/}
-      </ul>
     </>
   );
 }
