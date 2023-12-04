@@ -27,8 +27,11 @@ function VistaUsers() {
       <>
         <Navbar />
         <div>
-          <h3>No hay datos</h3>
-          <h3>hubo un problema, por favor intente devuelta</h3>;
+          <h3>Cargando, por favor espere</h3>
+          <h3>
+            SI no logra cargar, hubo un problema, por favor intente devuelta
+          </h3>
+          ;
         </div>
       </>
     );

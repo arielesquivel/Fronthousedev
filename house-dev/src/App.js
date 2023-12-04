@@ -13,6 +13,11 @@ import Register from "./componentes/register";
 import Buscador from "./componentes/buscador";
 import { set_user } from "./store/user";
 import NotFound from "./commons/NotFound";
+import PropiedadesAdmin from "./componentes/PropiedadesAdmin";
+import EditarPropiedades from "./componentes/EditarPropiedades";
+import userEvent from "@testing-library/user-event";
+import { useSelector } from "react-redux";
+import CitasAdmin from "./componentes/CitasAdmin";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,7 +30,9 @@ function App() {
         console.log("Detalles del error:", error);
       });
   }, []);
-
+  const user = useSelector((state) => {
+    return state.user;
+  });
   //{user.admin && (<Route path="/admin/agregar" element={<VistaAgregarProps />} />
   //)}
 
@@ -36,7 +43,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/admin/agregar" element={<VistaAgregarProps />} />
+        {user.rol === "ADMIN" && (
+          <>
+            <Route path="/admin/agregar" element={<VistaAgregarProps />} />
+            <Route path="/admin/propiedades" element={<PropiedadesAdmin />} />
+            <Route path="/admin/editar" element={<EditarPropiedades />} />
+            <Route path="/admin/citas" element={<CitasAdmin />} />
+          </>
+        )}
         <Route path="/usuarios" element={<VistaUsers />} />
         <Route path="/buscador" element={<Buscador />} />
         <Route path="users/:id/*" element={<VistaUsers />} />
