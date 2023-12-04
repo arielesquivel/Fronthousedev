@@ -3,9 +3,14 @@ import "../App.css";
 import "bootstrap";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 function Navbar() {
   const navigate = useNavigate();
 
+  const user = useSelector((state) => {
+    return state.user;
+  });
   const handleLogout = async () => {
     try {
       // Realiza la solicitud de cierre de sesión al servidor
@@ -49,21 +54,29 @@ function Navbar() {
                   Ver mas
                 </a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <Link class="dropdown-item" to="/login">
-                      Login
-                    </Link>
-                  </li>
-                  <li>
-                    <Link class="dropdown-item" to="/register">
-                      Registrate
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/admin/agregar" class="dropdown-item">
-                      Agregar
-                    </Link>
-                  </li>
+                  {user && (
+                    <>
+                      <li>
+                        <Link class="dropdown-item" to="/login">
+                          Login
+                        </Link>
+                      </li>
+                      <li>
+                        <Link class="dropdown-item" to="/register">
+                          Registrate
+                        </Link>
+                      </li>
+                    </>
+                  )}
+                  {user?.rol === "ADMIN" ? (
+                    <>
+                      <li>
+                        <Link to="/admin/agregar" class="dropdown-item">
+                          Agregar
+                        </Link>
+                      </li>
+                    </>
+                  ) : null}
                   <li>
                     <hr class="dropdown-divider" />
                   </li>

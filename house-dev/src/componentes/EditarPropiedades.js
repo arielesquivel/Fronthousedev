@@ -7,7 +7,7 @@ import { useParams, useNavigate } from "react-router";
 import Calendar from "./Calendar";
 import { useSelector } from "react-redux";
 
-function VistaPropiedades() {
+function EditarPropiedades() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState({});
@@ -136,4 +136,4 @@ function VistaPropiedades() {
     );
   }
 }
-export default VistaPropiedades;
+export default EditarPropiedades;

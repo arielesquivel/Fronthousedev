@@ -16,6 +16,9 @@ const Grid = (props) => {
   const propiedades = useSelector((state) => {
     return state.propiedades;
   });
+  const citas = useSelector((state) => {
+    return state.citas;
+  });
   let datas = [];
   console.log(propiedades);
   useEffect(() => {
@@ -34,6 +37,9 @@ const Grid = (props) => {
     datas = data;
   } else {
     datas = propiedades;
+  }
+  if (citas.length > 1) {
+    datas = citas;
   }
   return (
     <div class="row">
