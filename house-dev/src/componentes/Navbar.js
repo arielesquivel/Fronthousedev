@@ -5,8 +5,10 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { del_user } from "../store/user";
 function Navbar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => {
     return state.user;
@@ -17,7 +19,7 @@ function Navbar() {
       await axios.post("http://localhost:5000/api/logout", null, {
         withCredentials: true,
       });
-
+      dispatch(del_user(""));
       // Después de cerrar sesión, redirige a la página de inicio de sesión
       navigate("/home");
     } catch (error) {
@@ -36,7 +38,7 @@ function Navbar() {
       <nav class={`navbar navbar-expand-lg ${complement_1}`}>
         <div class="container-fluid">
           <a class="navbar-brand">HOD.</a>
-          <li></li>
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -93,13 +95,14 @@ function Navbar() {
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <Link to="/usuarios" class="nav-link " aria-disabled="true">
-                  Mi Perfil
-                </Link>
-              </li>
+              {user.rol && (
+                <li class="nav-item">
+                  <Link to="/usuarios" class="nav-link " aria-disabled="true">
+                    Mi Perfil
+                  </Link>
+                </li>
+              )}
             </ul>
-
             {user.rol && (
               <>
                 <button onClick={handleLogout} class="btn btn-outline-success">
@@ -110,11 +113,10 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <ul className="conteiner_navar">
-        {/* <li>
+
+      {/* <li>
           <Link to="/favoritos">Favoritos</Link>
         </li>*/}
-      </ul>
     </>
   );
 }
