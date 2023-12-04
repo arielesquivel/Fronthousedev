@@ -102,9 +102,11 @@ function Navbar() {
               </li>
             </ul>
             {user.rol && (
-              <button onClick={handleLogout} class="btn btn-outline-success">
-                <Link>Logout</Link>
-              </button>
+              <>
+                <button onClick={handleLogout} class="btn btn-outline-success">
+                  <Link>Logout</Link>
+                </button>
+              </>
             )}
           </div>
         </div>
