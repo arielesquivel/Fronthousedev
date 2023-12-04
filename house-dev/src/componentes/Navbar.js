@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { del_user } from "../store/user";
+import { RxAvatar } from "react-icons/rx";
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -105,6 +106,9 @@ function Navbar() {
             </ul>
             {user.rol && (
               <>
+                <p>
+                  Bienvenido: {user.name} <RxAvatar />
+                </p>
                 <button onClick={handleLogout} class="btn btn-outline-success">
                   <Link>Logout</Link>
                 </button>
