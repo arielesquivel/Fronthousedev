@@ -5,8 +5,10 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { del_user } from "../store/user";
 function Navbar() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => {
     return state.user;
@@ -17,17 +19,23 @@ function Navbar() {
       await axios.post("http://localhost:5000/api/logout", null, {
         withCredentials: true,
       });
-
+      dispatch(del_user(""));
       // Después de cerrar sesión, redirige a la página de inicio de sesión
       navigate("/home");
     } catch (error) {
       console.error("Error al cerrar sesión:", error.message);
     }
   };
+  let complement_1 = "";
+  if (user.rol === "ADMIN") {
+    complement_1 = "custom-navbar2";
+  } else {
+    complement_1 = "custom-navbar";
+  }
 
   return (
     <>
-      <nav class="navbar navbar-expand-lg  custom-navbar">
+      <nav class={`navbar navbar-expand-lg ${complement_1}`}>
         <div class="container-fluid">
           <a class="navbar-brand">HOD.</a>
           <li></li>
@@ -54,7 +62,7 @@ function Navbar() {
                   Ver mas
                 </a>
                 <ul class="dropdown-menu">
-                  {user && (
+                  {!user.rol && (
                     <>
                       <li>
                         <Link class="dropdown-item" to="/login">
@@ -93,10 +101,11 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-
-            <button onClick={handleLogout} class="btn btn-outline-success">
-              <Link>Logout</Link>
-            </button>
+            {user.rol && (
+              <button onClick={handleLogout} class="btn btn-outline-success">
+                <Link>Logout</Link>
+              </button>
+            )}
           </div>
         </div>
       </nav>
