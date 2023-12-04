@@ -24,10 +24,16 @@ function Navbar() {
       console.error("Error al cerrar sesión:", error.message);
     }
   };
+  let complement_1 = "";
+  if (user.rol === "ADMIN") {
+    complement_1 = "custom-navbar2";
+  } else {
+    complement_1 = "custom-navbar";
+  }
 
   return (
     <>
-      <nav class="navbar navbar-expand-lg  custom-navbar">
+      <nav class={`navbar navbar-expand-lg ${complement_1}`}>
         <div class="container-fluid">
           <a class="navbar-brand">HOD.</a>
           <li></li>
@@ -54,7 +60,7 @@ function Navbar() {
                   Ver mas
                 </a>
                 <ul class="dropdown-menu">
-                  {user && (
+                  {!user.rol && (
                     <>
                       <li>
                         <Link class="dropdown-item" to="/login">
@@ -94,9 +100,13 @@ function Navbar() {
               </li>
             </ul>
 
-            <button onClick={handleLogout} class="btn btn-outline-success">
-              <Link>Logout</Link>
-            </button>
+            {user.rol && (
+              <>
+                <button onClick={handleLogout} class="btn btn-outline-success">
+                  <Link>Logout</Link>
+                </button>
+              </>
+            )}
           </div>
         </div>
       </nav>
