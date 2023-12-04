@@ -38,7 +38,9 @@ function Navbar() {
     <>
       <nav class={`navbar navbar-expand-lg ${complement_1}`}>
         <div class="container-fluid">
-          <a class="navbar-brand">HOD.</a>
+          <h1 class="navbar-brand">
+            H<span className="od">OD.</span>
+          </h1>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -106,10 +108,12 @@ function Navbar() {
             </ul>
             {user.rol && (
               <>
-                <p>
-                  Bienvenido: {user.name} <RxAvatar />
-                </p>
-                <button onClick={handleLogout} class="btn btn-outline-success">
+                <div>
+                  <p className="mensP">
+                    Bienvenido: {user.name} <RxAvatar />
+                  </p>
+                </div>
+                <button onClick={handleLogout} class="btn btn-light">
                   <Link>Logout</Link>
                 </button>
               </>
