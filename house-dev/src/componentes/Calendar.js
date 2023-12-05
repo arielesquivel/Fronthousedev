@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import "../App.css";
+import { DateTimePicker } from "react-datetime-picker";
+import "react-datetime-picker/dist/DateTimePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-clock/dist/Clock.css";
 
 let ValuePiece = Date | null;
 
@@ -39,12 +43,15 @@ function Calendario(prop) {
 
   return (
     <div>
-      <Calendar onChange={onChange} value={data} />
-      {console.log(data)}
-
-      <button type="submit" class="btn btn-dark " onClick={handleClick}>
-        Reservar visita
-      </button>
+      <div>
+        <DateTimePicker onChange={onChange} value={data} />
+        {console.log(data)}
+      </div>
+      <div className="btn-calen">
+        <button type="submit" class="btn btn-dark " onClick={handleClick}>
+          Reservar visita
+        </button>
+      </div>
     </div>
   );
 }
