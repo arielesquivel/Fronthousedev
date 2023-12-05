@@ -83,7 +83,12 @@ function Navbar() {
                     <>
                       <li>
                         <Link to="/admin/agregar" class="dropdown-item">
-                          Agregar
+                          Agregar Propiedades
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/admin/citas" class="dropdown-item">
+                          Citas
                         </Link>
                       </li>
                     </>
@@ -94,6 +99,11 @@ function Navbar() {
                   <li>
                     <Link class="dropdown-item" to="/home">
                       Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/Favoritos">
+                      Favoritos
                     </Link>
                   </li>
                 </ul>
