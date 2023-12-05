@@ -42,9 +42,12 @@ function VistaPropiedades() {
 
   const deleteHandle = () => {
     axios
-      .delete("http://localhost:5000/api/propiedades/${id}")
+      .delete(`http://localhost:5000/api/propiedades/${id}`)
       .then((res) => res.data)
-      .then((data) => navigate())
+      .then((data) => {
+        console.log(data);
+        navigate("/admin/propiedades");
+      })
       .catch((error) => {
         console.log(error);
         alert(
@@ -53,7 +56,7 @@ function VistaPropiedades() {
       });
   };
   const editHandle = () => {
-    navigate("admin/editar");
+    navigate(`/admin/propiedades/editar/${id}`);
   };
 
   if (!data.id) {

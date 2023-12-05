@@ -40,7 +40,7 @@ function EditarPropiedades() {
 
   const deleteHandle = () => {
     axios
-      .delete("http://localhost:5000/api/propiedades/${id}")
+      .delete(`http://localhost:5000/api/propiedades/${id}`)
       .then((res) => res.data)
       .then((data) => navigate("/admin/citas"))
       .catch((error) => {

@@ -47,7 +47,10 @@ function App() {
           <>
             <Route path="/admin/agregar" element={<VistaAgregarProps />} />
             <Route path="/admin/propiedades" element={<PropiedadesAdmin />} />
-            <Route path="/admin/editar" element={<EditarPropiedades />} />
+            <Route
+              path="/admin/propiedades/editar/:id/*"
+              element={<EditarPropiedades />}
+            />
             <Route path="/admin/citas" element={<CitasAdmin />} />
           </>
         )}
