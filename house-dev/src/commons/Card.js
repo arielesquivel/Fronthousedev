@@ -4,8 +4,47 @@ import { IoIosBed } from "react-icons/io";
 import { GiBathtub } from "react-icons/gi";
 import { TbBrandCashapp } from "react-icons/tb";
 import { LiaRulerCombinedSolid } from "react-icons/lia";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
-const Card = ({ data }) => {
+const Card = (props) => {
+  const data = props.data.data;
+  console.log(data);
+  let flag = props.data.flag;
+  const user = useSelector((state) => {
+    return state.user;
+  });
+  const handlefavoritos = () => {
+    axios
+      .post("http://localhost:5000/api/favoritos", data.id, {
+        withCredentials: true,
+      })
+      .then(alert("exitoso posteo"))
+      .catch((error) => {
+        alert(error);
+      });
+  };
+  const handleCancelar = () => {
+    axios
+      .post("http://localhost:5000/api/citas/rechazado", data.email, {
+        withCredentials: true,
+      })
+      .then(alert("exitoso posteo"))
+      .catch((error) => {
+        alert(error);
+      });
+  };
+  const handleAceptar = () => {
+    axios
+      .post("http://localhost:5000/api/citas/aceptado", data.email, {
+        withCredentials: true,
+      })
+      .then(alert("exitoso posteo"))
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   const { category } = useParams();
   console.log(category);
   return (
@@ -25,30 +64,81 @@ const Card = ({ data }) => {
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">{data?.nombre}</h5>
+              {!flag ? (
+                <>
+                  <h5 class="card-title">{data?.nombre}</h5>
 
-              <p class="card-text">
-                Precio:
-                <TbBrandCashapp />
-                {data?.precio}
-              </p>
+                  <p class="card-text">
+                    Precio:
+                    <TbBrandCashapp />
+                    {data?.precio}
+                  </p>
 
-              <p class="card-text">
-                <small class="text-body-secondary">
-                  <small class="text-body-secondary">
-                    <GiBathtub />
-                    Baños : {data?.baños}
-                  </small>
-                  <IoIosBed /> Ambientes : {data?.ambientes}
-                </small>
-                <small>
-                  <LiaRulerCombinedSolid /> {data.metraje}
-                </small>
-              </p>
-
-              <Link to={`/propiedades/${data.id}`}>
-                <button class="btn btn-outline-primary">ver mas</button>
-              </Link>
+                  <p class="card-text">
+                    <small class="text-body-secondary">
+                      <small class="text-body-secondary">
+                        <GiBathtub />
+                        Baños : {data?.baños}
+                      </small>
+                      <IoIosBed /> Ambientes : {data?.ambientes}
+                    </small>
+                    <small>
+                      <LiaRulerCombinedSolid /> {data.metraje}
+                    </small>
+                  </p>
+                  <button
+                    class="btn btn-outline-primary"
+                    onClick={handlefavoritos}
+                  >
+                    favoritos
+                  </button>
+                  <Link to={`/propiedades/${data.id}`}>
+                    <button class="btn btn-outline-primary">ver mas</button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <h5 class="card-title">{data?.fecha}</h5>
+                  <p class="card-text">
+                    Direccion:
+                    <TbBrandCashapp />
+                    {data?.direccion}
+                    {data?.localidad}
+                  </p>
+                  <p class="card-text">
+                    Mail:
+                    <TbBrandCashapp />
+                    {data?.email}
+                  </p>
+                  <p class="card-text">
+                    Nombre:
+                    <TbBrandCashapp />
+                    {data?.nombre}
+                    {data?.apellido}
+                  </p>
+                  <p class="card-text">
+                    Telefono:
+                    <TbBrandCashapp />
+                    {data?.contacto}
+                  </p>
+                  {user.rol === "ADMIN" && (
+                    <>
+                      <button
+                        class="btn btn-outline-primary"
+                        onClick={handleCancelar}
+                      >
+                        cancelar cita
+                      </button>
+                      <button
+                        class="btn btn-outline-primary"
+                        onClick={handleAceptar}
+                      >
+                        aceptar cita
+                      </button>
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../start.css";
 import { useSelector } from "react-redux";
@@ -20,8 +20,18 @@ function CitasAdmin() {
   });
 
   const { type } = useParams();
+  /*
   const location = useLocation();
+  const array = location.pathname.split("/");
+  let flag = false;
+  for (let element in array) {
+    if (element == "citas") {
+      flag = true;
+    }
+  }
   console.log("°|°|°|°|°|°|°|°|°|°|°|°|°|°", location.pathname);
+  */
+  let flag = true;
   const propiedades = useSelector((state) => {
     return state.propiedades;
   });
@@ -42,26 +52,39 @@ function CitasAdmin() {
     const localidad = e.target.value;
     setForm({ ...form, localidad });
   };
+  /*
+  axios
+    .get("http://localhost:5000/api/me", { withCredentials: true })
+    .then((res) => dispatch(set_user(res.data)))
+    .catch((error) => {
+      console.log("Detalles del error:", error);
+    });
 
-  const handleSumit = (e) => {
-    e.preventDefault();
+  const user = useSelector((state) => {
+    return state.user;
+  });
+*/
+  useEffect(() => {
     axios
-      .get("http://localhost:5000/citas/all", { params: form })
-      .then((data) => {
-        dispatch(set_citas(data));
+      .get("http://localhost:5000/api/citas/all", {
+        withCredentials: true,
+      })
+      .then((payload) => {
+        console.log("******************************************", payload);
+        dispatch(set_citas(payload.data));
       })
       .catch((error) => {
-        console.log(error);
+        console.log("******************************************", error);
       });
-    // Puedes hacer algo con los datos del formulario aquí
-  };
+  }, []);
+  // Puedes hacer algo con los datos del formulario aquí
 
   return (
     <>
       <div>
         <Navbar />
       </div>
-      <Grid />
+      <Grid prop={flag} />
     </>
   );
 }
