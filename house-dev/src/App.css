@@ -234,6 +234,9 @@ button:hover {
 .btn1 {
   width: 20%;
 } /* botones */
+.btn2 {
+  width: 90%;
+}
 .btn-vistaPropiedades {
   display: flex;
   flex-direction: row;
@@ -254,6 +257,7 @@ button:hover {
   padding: 4.1% 15%;
 }
 .img-usersperfil {
+  height: 100%;
   padding-left: 10%;
   display: flex;
   flex-direction: column;
@@ -261,6 +265,15 @@ button:hover {
   align-items: flex-end;
   flex-wrap: wrap;
   align-content: flex-end;
+}
+.img-usersperfil img {
+  max-width: 80px;
+}
+.oculto {
+  display: none;
+}
+.visible {
+  display: block;
 }
 /*vista Buscador*/
 .conteiner-buscador {

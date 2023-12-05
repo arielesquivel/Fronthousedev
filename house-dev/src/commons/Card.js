@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { IoIosBed } from "react-icons/io";
 import { GiBathtub } from "react-icons/gi";
 import { TbBrandCashapp } from "react-icons/tb";
+import { LiaRulerCombinedSolid } from "react-icons/lia";
+
 const Card = ({ data }) => {
   const { category } = useParams();
   console.log(category);
@@ -38,6 +40,9 @@ const Card = ({ data }) => {
                     Baños : {data?.baños}
                   </small>
                   <IoIosBed /> Ambientes : {data?.ambientes}
+                </small>
+                <small>
+                  <LiaRulerCombinedSolid /> {data.metraje}
                 </small>
               </p>
 

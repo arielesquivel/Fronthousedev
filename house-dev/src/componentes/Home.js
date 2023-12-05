@@ -61,9 +61,7 @@ function Home() {
       <div class="conteiner">
         <div className="home">
           <div className="background-2">
-            <div className="curve-arrow">
-              <img className="image-arrow" src={arrow} alt="arrow" />
-            </div>
+            <h1>Busca tu propiedad ideal</h1>
             <div className="center-box">
               <label htmlFor="tipo">
                 <label>

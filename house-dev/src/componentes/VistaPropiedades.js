@@ -8,6 +8,13 @@ import Calendar from "./Calendar";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
+import { IoIosBed } from "react-icons/io";
+import { GiBathtub } from "react-icons/gi";
+import { TbBrandCashapp } from "react-icons/tb";
+import { LiaRulerCombinedSolid } from "react-icons/lia";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaHome } from "react-icons/fa";
+
 const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
@@ -125,15 +132,26 @@ function VistaPropiedades() {
             <div className="col-md-2">
               <h1 placeholder="nombre de la propiedad">{data.nombre}</h1>
               <p placeholder="Descripcion">Descripcion: {data.description}</p>
-              <p placeholder="Precio">Precio: US$ {data.precio}</p>
-              <p placeholder="Tamaño">Tamaño: {data.metraje}</p>
-              <p placeholder="Ubicacion">Ubicacion: {data.direccion}</p>
-
-              <p placeholder="Tipo de Propiedad">Tipo:{data.categoria}</p>
-              <p placeholder="Cantidad de dormitorios">
-                Dormitorios: {data.dormitorios}
+              <p placeholder="Precio">
+                Precio: <TbBrandCashapp /> {data.precio}
               </p>
-              <p placeholder="Cantidad de baños">Baños: {data.baños}</p>
+              <p placeholder="Tamaño">
+                <LiaRulerCombinedSolid />
+                Mts: {data.metraje}
+              </p>
+              <p placeholder="Ubicacion">
+                <IoLocationOutline />
+                Ubicacion: {data.direccion}
+              </p>
+              <p placeholder="Tipo de Propiedad">
+                <FaHome />:{data.categoria}
+              </p>
+              <p placeholder="Cantidad de dormitorios">
+                <IoIosBed /> Dormitorios: {data.dormitorios}
+                <p placeholder="Cantidad de baños">
+                  <GiBathtub /> Baños: {data.baños}
+                </p>
+              </p>
             </div>
           </div>
           <div className="btn-vistaPropiedades">

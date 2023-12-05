@@ -58,18 +58,22 @@ function VistaUsers() {
         <Navbar />
         <div className="container">
           <div className="vistaUsers">
-            <h1>Mi prefil</h1>
+            <h1>Mi Perfil</h1>
             <div className="img-usersperfil">
-              <img src="#" alt="#"></img>
-              <button>Cambiar</button>
+              <img
+                src="https://static.vecteezy.com/system/resources/previews/006/487/917/non_2x/man-avatar-icon-free-vector.jpg"
+                alt="Avatar img"
+              />
             </div>
-            <p>Nombre:{data.name}</p>
-            <p>Apellido:{data.lastName}</p>
-            <p>Contacto:{data.contact}</p>
-            <p>Email:{data.email}</p>
-            <p>Contraseña:{data.password}</p>
-            <div className="btn-md">
-              <button>Editar informacion</button>
+            <div>
+              <p>Nombre:{data.name}</p>
+              <p>Apellido:{data.lastName}</p>
+              <p>Contacto:{data.contact}</p>
+              <p>Email:{data.email}</p>
+              <p className={data.password ? "oculto" : ""}>
+                Contraseña: {data.password}
+              </p>
+              <button class="btn btn-dark btn2">Editar Informacion</button>
             </div>
           </div>
         </div>
