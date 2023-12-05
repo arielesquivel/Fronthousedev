@@ -8,8 +8,14 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 
 const Grid = (props) => {
-  const { type } = useParams();
-  const collection = props[type];
+  //const { type } = useParams();
+  let flag = false;
+  console.log("*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°", props);
+  if (props) {
+    flag = props.prop;
+  }
+  console.log("*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°", flag);
+  //const collection = props[type];
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [data, SetData] = useState([]);
@@ -45,7 +51,7 @@ const Grid = (props) => {
     <div class="row">
       {datas.map((data) => (
         <div class="col-md-6" key={data.id}>
-          <Card data={data} />
+          <Card data={{ data, flag }} />
         </div>
       ))}
     </div>

@@ -9,7 +9,7 @@ const reducerCitas = createReducer(initialState, {
   [set_citas]: (state, action) => {
     console.log(state);
 
-    return (state = action.payload.data);
+    return (state = action.payload);
   },
 });
 
