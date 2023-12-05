@@ -322,3 +322,7 @@ button:hover {
   padding: 3%;
   text-align: center;
 }
+.btn-calen {
+  display: flex;
+  justify-content: flex-end;
+}
