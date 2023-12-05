@@ -62,7 +62,7 @@ function Home() {
         <div className="home">
           <div className="background-2">
             <h1>Busca tu propiedad ideal</h1>
-            <div className="center-box">
+            <div className="center-box2">
               <label htmlFor="tipo">
                 <label>
                   Alquilar
@@ -85,14 +85,29 @@ function Home() {
                 id=""
                 value={form.banos}
                 /*onChange={handleInput}*/
-              ></select>
+              >
+                {" "}
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
               <label>Dormitorios</label>
               <select
                 name="dormitorios"
                 id=""
                 value={form.banos}
                 /*onChange={handleInput}*/
-              ></select>
+              >
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
               <label>Precio minimo </label>
               <input />
               <label>Precio maximo </label>
@@ -100,20 +115,54 @@ function Home() {
               <label>Barrio</label>
               <select>
                 Selecciona un barrio
-                {
-                  <option selected disabled hidden>
-                    Retiro, San Nicolás, Puerto Madero, San Telmo, Montserrat ,
-                    Constitución, Recoleta ,Balvanera y San Cristóbal,La Boca,
-                    Barracas, Parque Patricios , Nueva Pompeya, Almagro , Boedo,
-                    Caballito,Flores , Parque Chacabuco,Villa Soldati, Villa
-                    Riachuelo , Villa Lugano, Liniers, Mataderos , Parque
-                    Avellaneda, Villa Real, Monte Castro, Versalles, Floresta,
-                    Vélez Sarsfield , Villa Luro
-                  </option>
-                }
+                <option>Retiro</option>
+                <option>San Nicolás</option>
+                <option>Puerto Madero</option>
+                <option>San Telmo</option>
+                <option>Montserrat</option>
+                <option>Constitución</option>
+                <option> Recoleta</option>
+                <option>Balvanera</option>
+                <option>San Cristóbal</option>
+                <option>La Boca</option>
+                <option>Barracas</option>
+                <option>Parque Patricios</option>
+                <option>Nueva Pompeya</option>
+                <option>Almagro </option>
+                <option>Boedo</option>
+                <option>Caballito</option>
+                <option>Flores</option>
+                <option>Parque Chacabuco</option>
+                <option>Villa Soldati</option>
+                <option>Villa Riachuelo </option>
+                <option>Villa Lugano</option>
+                <option>Liniers</option>
+                <option>Mataderos</option>
+                <option>Parque Avellaneda</option>
+                <option>Villa Real</option>
+                <option>Monte Castro</option>
+                <option>Versalles</option>
+                <option>Floresta</option>
+                <option>Vélez</option>
+                <option>Sarsfield</option>
+                <option>Villa Luro</option>
+                <option>Tres de Febrero</option>
+                <option>Belgrano</option>
+                <option>Palermo</option>
+                <option>Once</option>
+                <option>Jesús María</option>
+                <option>Recoleta</option>
+                <option>Glew</option>
+                <option>Ensenada</option>
+                <option>Esperanza</option>
+                <option>Chivilcoy</option>
+                <option>Aldao</option>
+                <option>Argentino</option>
+                <option>Bahía Blanca</option>
+                <option>Buenos Aires</option>
               </select>
             </div>
-            <button onClick={handleSumit} className="btn btn-primary">
+            <button onClick={handleSumit} class="btn btn-secondary">
               Buscar
             </button>
           </div>

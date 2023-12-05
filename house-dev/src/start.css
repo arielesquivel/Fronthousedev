@@ -45,6 +45,14 @@
   padding-left: 0%;
   padding-right: 2%;
 }
+.center-box2 {
+  display: flex;
+  flex-direction: column;
+
+  padding-left: 0%;
+  padding-right: 2%;
+  color: black;
+}
 .center {
   position: relative;
   top: 15rem;

@@ -89,13 +89,13 @@ const Card = (props) => {
                     </small>
                   </p>
                   <button
-                    class="btn btn-outline-primary"
+                    class="btn btn-outline-secondary"
                     onClick={handlefavoritos}
                   >
                     favoritos
                   </button>
                   <Link to={`/propiedades/${data.id}`}>
-                    <button class="btn btn-outline-primary">ver mas</button>
+                    <button class="btn btn-outline-secondary">ver mas</button>
                   </Link>
                 </>
               ) : (
@@ -125,13 +125,13 @@ const Card = (props) => {
                   {user.rol === "ADMIN" && (
                     <>
                       <button
-                        class="btn btn-outline-primary"
+                        class="btn btn-outline-secondary"
                         onClick={handleCancelar}
                       >
                         cancelar cita
                       </button>
                       <button
-                        class="btn btn-outline-primary"
+                        class="btn btn-outline-secondary"
                         onClick={handleAceptar}
                       >
                         aceptar cita

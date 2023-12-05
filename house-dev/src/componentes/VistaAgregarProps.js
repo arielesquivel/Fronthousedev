@@ -165,7 +165,9 @@ function VistaAgregarProps() {
           <input name="contacto" placeholder="Ingrese su numero de contacto" />
           <label htmlFor="img">Imagenes :</label>
           <input type="file" multiple accept=".jpg,.png, .jpeg" />
-          <button type="submit">Publicar Propiedad</button>
+          <button type="submit" class="btn btn-outline-secondary">
+            Publicar Propiedad
+          </button>
         </form>
       </div>
     </>
