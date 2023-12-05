@@ -6,7 +6,9 @@ import { TbBrandCashapp } from "react-icons/tb";
 import { LiaRulerCombinedSolid } from "react-icons/lia";
 import { useSelector } from "react-redux";
 import axios from "axios";
-
+import { IoIosPhonePortrait } from "react-icons/io";
+import { IoLocationOutline } from "react-icons/io5";
+import { CiMail } from "react-icons/ci";
 const Card = (props) => {
   const data = props.data.data;
   console.log(data);
@@ -98,28 +100,27 @@ const Card = (props) => {
                 </>
               ) : (
                 <>
-                  <h5 class="card-title">{data?.fecha}</h5>
+                  <h5 class="card-title">Cita el Dia:{data?.fecha}</h5>
                   <p class="card-text">
                     Direccion:
-                    <TbBrandCashapp />
+                    <IoLocationOutline />
                     {data?.direccion}
                     {data?.localidad}
                   </p>
                   <p class="card-text">
+                    <CiMail />
                     Mail:
-                    <TbBrandCashapp />
                     {data?.email}
                   </p>
                   <p class="card-text">
-                    Nombre:
-                    <TbBrandCashapp />
-                    {data?.nombre}
-                    {data?.apellido}
+                    <IoIosPhonePortrait />
+                    Telefono:
+                    {data?.contacto}
                   </p>
                   <p class="card-text">
-                    Telefono:
-                    <TbBrandCashapp />
-                    {data?.contacto}
+                    Nombre:
+                    {data?.nombre}
+                    {data?.apellido}
                   </p>
                   {user.rol === "ADMIN" && (
                     <>

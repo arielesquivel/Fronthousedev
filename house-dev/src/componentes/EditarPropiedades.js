@@ -6,12 +6,24 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router";
 import Calendar from "./Calendar";
 import { useSelector } from "react-redux";
-
+import ClipLoader from "react-spinners/ClipLoader";
+import { IoIosBed } from "react-icons/io";
+import { GiBathtub } from "react-icons/gi";
+import { TbBrandCashapp } from "react-icons/tb";
+import { LiaRulerCombinedSolid } from "react-icons/lia";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaHome } from "react-icons/fa";
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 function EditarPropiedades() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState({});
-
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#ffffff");
   const user = useSelector((state) => {
     return state.user;
   });
@@ -30,7 +42,7 @@ function EditarPropiedades() {
     axios
       .delete("http://localhost:5000/api/propiedades/${id}")
       .then((res) => res.data)
-      .then((data) => navigate())
+      .then((data) => navigate("/admin/citas"))
       .catch((error) => {
         console.log(error);
         alert(
@@ -39,15 +51,30 @@ function EditarPropiedades() {
       });
   };
   const editHandle = () => {
-    navigate("admin/editar");
+    navigate("/admin/editar");
   };
 
   if (!data.id) {
     return (
       <>
         <Navbar />
-        <div>
-          <h3>No hay datos</h3>
+        <div className="sweet-loading">
+          <button onClick={() => setLoading(!loading)}>Toggle Loader</button>
+          <input
+            value={color}
+            onChange={(input) => setColor(input.target.value)}
+            placeholder="Color of the loader"
+          />
+          <p>Buscando Datos</p>
+
+          <ClipLoader
+            color={color}
+            loading={loading}
+            cssOverride={override}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
         </div>
       </>
     );
@@ -103,33 +130,44 @@ function EditarPropiedades() {
             <div className="col-md-2">
               <h1 placeholder="nombre de la propiedad">{data.nombre}</h1>
               <p placeholder="Descripcion">Descripcion: {data.description}</p>
-              <p placeholder="Precio">Precio: US$ {data.precio}</p>
-              <p placeholder="Tamaño">Tamaño: {data.metraje}</p>
-              <p placeholder="Ubicacion">Ubicacion: {data.direccion}</p>
-
-              <p placeholder="Tipo de Propiedad">Tipo:{data.categoria}</p>
-              <p placeholder="Cantidad de dormitorios">
-                Dormitorios: {data.dormitorios}
+              <p placeholder="Precio">
+                Precio: <TbBrandCashapp /> {data.precio}
               </p>
-              <p placeholder="Cantidad de baños">Baños: {data.baños}</p>
-            </div>
-            <div>
-              {user.rol === "ADMIN" ? (
-                <>
-                  <button type="submit" className="btn" onClick={deleteHandle}>
-                    eliminar propiedad
-                  </button>
-                  <button type="submit" className="btn" onClick={editHandle}>
-                    editar propiedad
-                  </button>
-                </>
-              ) : null}
+              <p placeholder="Tamaño">
+                <LiaRulerCombinedSolid />
+                Mts: {data.metraje}
+              </p>
+              <p placeholder="Ubicacion">
+                <IoLocationOutline />
+                Ubicacion: {data.direccion}
+              </p>
+              <p placeholder="Tipo de Propiedad">
+                <FaHome />:{data.categoria}
+              </p>
+              <p placeholder="Cantidad de dormitorios">
+                <IoIosBed /> Dormitorios: {data.dormitorios}
+                <p placeholder="Cantidad de baños">
+                  <GiBathtub /> Baños: {data.baños}
+                </p>
+              </p>
             </div>
           </div>
-          <div className="calendario-conteiner">
-            <div className="calendario">
-              <Calendar prop={data.id} />
-            </div>
+          <div>
+            {user.rol === "ADMIN" ? (
+              <>
+                <button type="submit" className="btn" onClick={deleteHandle}>
+                  eliminar propiedad
+                </button>
+                <button type="submit" className="btn" onClick={editHandle}>
+                  editar propiedad
+                </button>
+              </>
+            ) : null}
+          </div>
+        </div>
+        <div className="calendario-conteiner">
+          <div className="calendario">
+            <Calendar prop={data.id} />
           </div>
         </div>
       </>
