@@ -8,6 +8,7 @@ import Grid from "./Grid";
 import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
 import { set_citas } from "../store/citas";
+import { useLocation } from "react-router-dom";
 
 function CitasAdmin() {
   const navigate = useNavigate();
@@ -18,10 +19,14 @@ function CitasAdmin() {
     ambientes: 0, // Inicializa las propiedades en el estado
   });
 
-  const { category } = useParams();
-  console.log(category);
+  const { type } = useParams();
+  const location = useLocation();
+  console.log("°|°|°|°|°|°|°|°|°|°|°|°|°|°", location.pathname);
   const propiedades = useSelector((state) => {
     return state.propiedades;
+  });
+  const citas = useSelector((state) => {
+    return state.citas;
   });
 
   const handlePrecioChange = (e) => {
