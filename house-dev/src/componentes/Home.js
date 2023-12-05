@@ -79,6 +79,39 @@ function Home() {
                   onChange={handleCheckboxChangeVender}
                 />
               </label>
+              <label>Baños</label>
+              <select
+                name="banos"
+                id=""
+                value={form.banos}
+                /*onChange={handleInput}*/
+              ></select>
+              <label>Dormitorios</label>
+              <select
+                name="dormitorios"
+                id=""
+                value={form.banos}
+                /*onChange={handleInput}*/
+              ></select>
+              <label>Precio minimo </label>
+              <input />
+              <label>Precio maximo </label>
+              <input />
+              <label>Barrio</label>
+              <select>
+                Selecciona un barrio
+                {
+                  <option selected disabled hidden>
+                    Retiro, San Nicolás, Puerto Madero, San Telmo, Montserrat ,
+                    Constitución, Recoleta ,Balvanera y San Cristóbal,La Boca,
+                    Barracas, Parque Patricios , Nueva Pompeya, Almagro , Boedo,
+                    Caballito,Flores , Parque Chacabuco,Villa Soldati, Villa
+                    Riachuelo , Villa Lugano, Liniers, Mataderos , Parque
+                    Avellaneda, Villa Real, Monte Castro, Versalles, Floresta,
+                    Vélez Sarsfield , Villa Luro
+                  </option>
+                }
+              </select>
             </div>
             <button onClick={handleSumit} className="btn btn-primary">
               Buscar
