@@ -231,8 +231,16 @@ button:hover {
   align-items: center;
   flex-wrap: nowrap;
 }
-.btn {
+.btn1 {
   width: 20%;
+} /* botones */
+.btn-vistaPropiedades {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 /*Vista Users*/
 .vistaUsers {
@@ -279,7 +287,7 @@ button:hover {
 }
 .card-text {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   border: 0%;

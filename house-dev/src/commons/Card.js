@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { IoIosBed } from "react-icons/io";
+import { GiBathtub } from "react-icons/gi";
+import { TbBrandCashapp } from "react-icons/tb";
 const Card = ({ data }) => {
   const { category } = useParams();
   console.log(category);
@@ -21,12 +24,23 @@ const Card = ({ data }) => {
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title">{data?.nombre}</h5>
-              <p class="card-text">Precio: {data?.precio}</p>
+
+              <p class="card-text">
+                Precio:
+                <TbBrandCashapp />
+                {data?.precio}
+              </p>
+
               <p class="card-text">
                 <small class="text-body-secondary">
-                  Ambientes: {data?.ambientes}
+                  <small class="text-body-secondary">
+                    <GiBathtub />
+                    Baños : {data?.baños}
+                  </small>
+                  <IoIosBed /> Ambientes : {data?.ambientes}
                 </small>
               </p>
+
               <Link to={`/propiedades/${data.id}`}>
                 <button class="btn btn-outline-primary">ver mas</button>
               </Link>

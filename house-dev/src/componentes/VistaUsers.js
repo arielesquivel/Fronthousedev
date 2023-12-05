@@ -4,11 +4,17 @@ import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router";
-
+import ClipLoader from "react-spinners/ClipLoader";
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 function VistaUsers() {
   const navigate = useNavigate();
   const [data, setData] = useState({});
-
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#ffffff");
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/perfil`, {
@@ -26,12 +32,23 @@ function VistaUsers() {
     return (
       <>
         <Navbar />
-        <div>
-          <h3>Cargando, por favor espere</h3>
-          <h3>
-            SI no logra cargar, hubo un problema, por favor intente devuelta
-          </h3>
-          ;
+        <div className="sweet-loading">
+          <button onClick={() => setLoading(!loading)}>Toggle Loader</button>
+          <input
+            value={color}
+            onChange={(input) => setColor(input.target.value)}
+            placeholder="Color of the loader"
+          />
+          <p>Buscando Datos</p>
+
+          <ClipLoader
+            color={color}
+            loading={loading}
+            cssOverride={override}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
         </div>
       </>
     );

@@ -6,12 +6,19 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router";
 import Calendar from "./Calendar";
 import { useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 function VistaPropiedades() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState({});
-
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#ffffff");
   const user = useSelector((state) => {
     return state.user;
   });
@@ -46,8 +53,23 @@ function VistaPropiedades() {
     return (
       <>
         <Navbar />
-        <div>
-          <h3>No hay datos</h3>
+        <div className="sweet-loading">
+          <button onClick={() => setLoading(!loading)}>Toggle Loader</button>
+          <input
+            value={color}
+            onChange={(input) => setColor(input.target.value)}
+            placeholder="Color of the loader"
+          />
+          <p>Buscando Datos</p>
+
+          <ClipLoader
+            color={color}
+            loading={loading}
+            cssOverride={override}
+            size={150}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
         </div>
       </>
     );
@@ -113,18 +135,26 @@ function VistaPropiedades() {
               </p>
               <p placeholder="Cantidad de baños">Baños: {data.baños}</p>
             </div>
-            <div>
-              {user.rol === "ADMIN" ? (
-                <>
-                  <button type="submit" className="btn" onClick={deleteHandle}>
-                    eliminar propiedad
-                  </button>
-                  <button type="submit" className="btn" onClick={editHandle}>
-                    editar propiedad
-                  </button>
-                </>
-              ) : null}
-            </div>
+          </div>
+          <div className="btn-vistaPropiedades">
+            {user.rol === "ADMIN" ? (
+              <>
+                <button
+                  type="submit"
+                  class="btn btn-light "
+                  onClick={deleteHandle}
+                >
+                  Eliminar Propiedad
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-light "
+                  onClick={editHandle}
+                >
+                  Editar Propiedad
+                </button>
+              </>
+            ) : null}
           </div>
           <div className="calendario-conteiner">
             <div className="calendario">
