@@ -113,7 +113,7 @@ function Navbar() {
                     Bienvenido: {user.name} <RxAvatar />
                   </p>
                 </div>
-                <button onClick={handleLogout} class="btn btn-light">
+                <button onClick={handleLogout} class="btn btn-light btn1">
                   <Link>Logout</Link>
                 </button>
               </>

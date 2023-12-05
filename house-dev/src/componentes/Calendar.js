@@ -42,7 +42,7 @@ function Calendario(prop) {
       <Calendar onChange={onChange} value={data} />
       {console.log(data)}
 
-      <button type="submit" className="btn" onClick={handleClick}>
+      <button type="submit" class="btn btn-dark " onClick={handleClick}>
         Reservar visita
       </button>
     </div>
