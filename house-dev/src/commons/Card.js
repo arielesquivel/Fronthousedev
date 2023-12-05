@@ -17,6 +17,7 @@ const Card = (props) => {
     return state.user;
   });
   const handlefavoritos = () => {
+    console.log("estos son los datos de la card", data.id);
     axios
       .post("http://localhost:5000/api/favoritos", data.id, {
         withCredentials: true,
