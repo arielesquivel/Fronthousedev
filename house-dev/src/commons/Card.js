@@ -19,9 +19,13 @@ const Card = (props) => {
   const handlefavoritos = () => {
     console.log("estos son los datos de la card", data.id);
     axios
-      .post("http://localhost:5000/api/favoritos", data.id, {
-        withCredentials: true,
-      })
+      .post(
+        "http://localhost:5000/api/favoritos",
+        { propiedad_id: data.id },
+        {
+          withCredentials: true,
+        }
+      )
       .then(alert("exitoso posteo"))
       .catch((error) => {
         alert(error);
