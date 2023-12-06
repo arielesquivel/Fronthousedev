@@ -29,7 +29,7 @@ const Card = (props) => {
         }
       )
       .then((result) => {
-        setBtnFavoritosCheck(true);
+        setBtnFavoritosCheck(false);
         console.log(result);
         alert("exitoso posteo");
       })

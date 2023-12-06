@@ -68,32 +68,32 @@ function EditarPropiedades() {
 
   /*cambios para el input*/
   const handleInputNombre = (e) => {
-    setChangeData({ ...(changeData.name = e.target.value) });
+    setChangeData({ ...changeData, nombre: e.target.value });
   };
   const handleDecripcion = (e) => {
-    setChangeData({ ...(changeData.description = e.target.value) });
+    setChangeData({ ...changeData, description: e.target.value });
   };
   const handleBaños = (e) => {
-    setChangeData({ ...(changeData.baños = e.target.value) });
+    setChangeData({ ...changeData, baños: e.target.value });
   };
   const handleDormitorios = (e) => {
-    setChangeData({ ...(changeData.dormitorios = e.target.value) });
+    setChangeData({ ...changeData, dormitorios: e.target.value });
   };
   const handlePrecio = (e) => {
-    setChangeData({ ...(changeData.precio = e.target.value) });
+    setChangeData({ ...changeData, precio: e.target.value });
   };
   const handleLocacidad = (e) => {
-    setChangeData({ ...(changeData.localidad = e.target.value) });
+    setChangeData({ ...changeData, localidad: e.target.value });
   };
 
   const handleDireccion = (e) => {
-    setChangeData({ ...(changeData.direccion = e.target.value) });
+    setChangeData({ ...changeData, direccion: e.target.value });
   };
   const handleMetraje = (e) => {
-    setChangeData({ ...(changeData.metraje = e.target.value) });
+    setChangeData({ ...changeData, metraje: e.target.value });
   };
   const handleCategoria = (e) => {
-    setChangeData({ ...(changeData.categoria = e.target.value) });
+    setChangeData({ ...changeData, categoria: e.target.value });
   };
 
   const editHandle = (e) => {
@@ -311,6 +311,7 @@ function EditarPropiedades() {
                 value={changeData.direccion}
                 onChange={handleDireccion}
               />
+
               <label>localidad:</label>
               <select
                 id="localidad"
@@ -333,7 +334,7 @@ function EditarPropiedades() {
                 <option value="Parque Patricios">Parque Patricios</option>
                 <option value="Nueva Pompeya">Nueva Pompeya</option>
                 <option value="Almagro">Almagro </option>
-                <option value="Boedo">Boedo</option>
+                <option>Boedo</option>
                 <option value="Caballito">Caballito</option>
                 <option value="Flores">Flores</option>
                 <option value="Parque Chacabuco">Parque Chacabuco</option>
@@ -365,6 +366,7 @@ function EditarPropiedades() {
                 <option value="Bahía Blanca">Bahía Blanca</option>
                 <option value="Villa Urquiza">Villa Urquiza</option>
               </select>
+
               <label>Categoria:</label>
               <select
                 id="categoria"

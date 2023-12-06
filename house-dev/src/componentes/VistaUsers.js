@@ -32,15 +32,15 @@ function VistaUsers() {
       });
   }, []);
   const handleInputname = (e) => {
-    setChangeData({ ...(changeData.name = e.target.value) });
+    setChangeData({ ...changeData, name: e.target.value });
   };
 
   const handleInputLastname = (e) => {
-    setChangeData({ ...(changeData.lastName = e.target.value) });
+    setChangeData({ ...changeData, lastName: e.target.value });
   };
 
   const handleInputcontact = (e) => {
-    setChangeData({ ...(changeData.contact = e.target.value) });
+    setChangeData({ ...changeData, contact: e.target.value });
   };
 
   const [isCheckedCambiar, setCheckedCambiar] = useState(true);
