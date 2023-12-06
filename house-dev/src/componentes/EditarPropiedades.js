@@ -33,7 +33,10 @@ function EditarPropiedades() {
     axios
       .get(`http://localhost:5000/api/propiedades/${id}`)
       .then((res) => res.data)
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data);
+        setChangeData(data);
+      })
       .catch(() => {
         navigate("/404");
       });
@@ -63,27 +66,58 @@ function EditarPropiedades() {
       });
   };
 
-  const handleA = (e) => {
-    changeData[e.target.name] = e.target.value;
+  /*cambios para el input*/
+  const handleInputNombre = (e) => {
+    setChangeData({ ...(changeData.name = e.target.value) });
   };
+  const handleDecripcion = (e) => {
+    setChangeData({ ...(changeData.description = e.target.value) });
+  };
+  const handleBaños = (e) => {
+    setChangeData({ ...(changeData.baños = e.target.value) });
+  };
+  const handleDormitorios = (e) => {
+    setChangeData({ ...(changeData.dormitorios = e.target.value) });
+  };
+  const handlePrecio = (e) => {
+    setChangeData({ ...(changeData.precio = e.target.value) });
+  };
+  const handleLocacidad = (e) => {
+    setChangeData({ ...(changeData.localidad = e.target.value) });
+  };
+
+  const handleDireccion = (e) => {
+    setChangeData({ ...(changeData.direccion = e.target.value) });
+  };
+  const handleMetraje = (e) => {
+    setChangeData({ ...(changeData.metraje = e.target.value) });
+  };
+  const handleCategoria = (e) => {
+    setChangeData({ ...(changeData.categoria = e.target.value) });
+  };
+
   const editHandle = (e) => {
     //  navigate("/admin/editar");
     //};
     //const handleSummit = (e) => {
     e.preventDefault();
+    changeData.id = data.id;
     const ambientes =
       parseInt(changeData.dormitorios) + parseInt(changeData.baños);
-    const payload = [...changeData];
+    const payload = { ...changeData };
     payload.alquilar = isCheckedAlquilar;
     payload.vender = isCheckedVender;
     payload.ambientes = ambientes;
 
     axios
-      .put("http://localhost:5000/api/propiedades/cambiar/", formData, {
+      .put("http://localhost:5000/api/propiedades/cambiar/", changeData, {
         withCredentials: true,
       })
       .then((result) => {
-        console.log(result);
+        console.log(
+          "-------------------este el result del axios edita props",
+          result
+        );
         navigate("/admin/propiedades");
       })
       .catch((error) => {
@@ -221,8 +255,8 @@ function EditarPropiedades() {
                 name="nombre"
                 id="nombre"
                 placeholder="nombre de la propiedad"
-                value={changeData.nombre || data.nombre}
-                onChange={handleA}
+                value={changeData.nombre}
+                onChange={handleInputNombre}
               />
               <label>Descripcion:</label>
               <input
@@ -230,8 +264,8 @@ function EditarPropiedades() {
                 type="text"
                 name="description"
                 id="Descripc"
-                value={changeData.description || data.description}
-                onChange={handleA}
+                value={changeData.description}
+                onChange={handleDecripcion}
               />
               <label>Precio:</label>
               <input
@@ -241,8 +275,8 @@ function EditarPropiedades() {
                 min="0"
                 max="9999999"
                 placeholder="$USD"
-                value={changeData.precio || data.precio}
-                onChange={handleA}
+                value={changeData.precio}
+                onChange={handlePrecio}
               />
               <label>
                 Alquilar
@@ -265,8 +299,8 @@ function EditarPropiedades() {
                 name="metraje"
                 min="0"
                 max="999999"
-                value={changeData.metraje || data.metraje}
-                onChange={handleA}
+                value={changeData.metraje}
+                onChange={handleMetraje}
               />
               <label>Direccion:</label>
               <input
@@ -274,15 +308,15 @@ function EditarPropiedades() {
                 name="direccion"
                 id="direccion"
                 placeholder="Direccion"
-                value={changeData.direccion || data.direccion}
-                onChange={handleA}
+                value={changeData.direccion}
+                onChange={handleDireccion}
               />
               <label>localidad:</label>
               <select
                 id="localidad"
                 name="localidad"
-                value={changeData.localidad || data.localidad}
-                onChange={handleA}
+                value={changeData.localidad}
+                onChange={handleLocacidad}
               >
                 <option value="">Seleccione una opcion</option>
                 <option value="Retiro">Retiro</option>
@@ -335,8 +369,8 @@ function EditarPropiedades() {
               <select
                 id="categoria"
                 name="categoria"
-                value={changeData.categoria || data.categoria}
-                onChange={handleA}
+                value={changeData.categoria}
+                onChange={handleCategoria}
               >
                 <option value="Casa">Casa</option>
                 <option value="Departamento">Departamento</option>
@@ -350,8 +384,8 @@ function EditarPropiedades() {
                 max="4"
                 placeholder="Dormitorios"
                 name="dormitorios"
-                value={changeData.dormitorios || data.dormitorios}
-                onChange={handleA}
+                value={changeData.dormitorios}
+                onChange={handleDormitorios}
               />
               <label>Baños:</label>
               <input
@@ -360,8 +394,8 @@ function EditarPropiedades() {
                 max="4"
                 placeholder="Baños"
                 name="baños"
-                value={changeData.baños || data.baños}
-                onChange={handleA}
+                value={changeData.baños}
+                onChange={handleBaños}
               />
             </div>
           </div>

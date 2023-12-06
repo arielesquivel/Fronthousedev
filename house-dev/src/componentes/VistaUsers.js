@@ -22,14 +22,25 @@ function VistaUsers() {
         withCredentials: true,
       })
       .then((res) => res.data)
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data);
+        setChangeData(data);
+      })
       .catch((error) => {
         console.log("°°°°°°°°°°°°°°°°°°", error);
         navigate("/404");
       });
   }, []);
-  const handleInputChange = (e) => {
-    changeData[e.target.name] = e.target.value;
+  const handleInputname = (e) => {
+    setChangeData({ ...(changeData.name = e.target.value) });
+  };
+
+  const handleInputLastname = (e) => {
+    setChangeData({ ...(changeData.lastName = e.target.value) });
+  };
+
+  const handleInputcontact = (e) => {
+    setChangeData({ ...(changeData.contact = e.target.value) });
   };
 
   const [isCheckedCambiar, setCheckedCambiar] = useState(true);
@@ -99,8 +110,8 @@ function VistaUsers() {
                 type="text"
                 name="name"
                 placeholder="Nombre"
-                onChange={handleInputChange}
-                value={changeData.name || data.name}
+                onChange={handleInputname}
+                value={changeData.name}
                 disabled={isCheckedCambiar}
               />
               <label>Apellido:</label>
@@ -108,8 +119,8 @@ function VistaUsers() {
                 type="text"
                 name="lastName"
                 placeholder="Apellido"
-                onChange={handleInputChange}
-                value={changeData.lastName || data.lastName}
+                onChange={handleInputLastname}
+                value={changeData.lastName}
                 disabled={isCheckedCambiar}
               />
               <label>Contacto:</label>
@@ -117,8 +128,8 @@ function VistaUsers() {
                 type="text"
                 name="contact"
                 placeholder="Contacto"
-                onChange={handleInputChange}
-                value={changeData.contact || data.contact}
+                onChange={handleInputcontact}
+                value={changeData.contact}
                 disabled={isCheckedCambiar}
               />
               <label>Email:</label>
@@ -126,9 +137,8 @@ function VistaUsers() {
                 type="email"
                 name="email"
                 placeholder="Ingrese su email"
-                onChange={handleInputChange}
-                value={changeData.email || data.email}
-                disabled={isCheckedCambiar}
+                value={data.email}
+                disabled={true}
               />
               <p className={data.password ? "oculto" : ""}>
                 Contraseña: {data.password}

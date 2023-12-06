@@ -10,11 +10,11 @@ import { useNavigate } from "react-router";
 const Grid = (props) => {
   //const { type } = useParams();
   let flag = false;
-  console.log("*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°", props);
+  console.log("------------prop de grid", props);
   if (props) {
     flag = props.prop;
   }
-  console.log("*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°*°", flag);
+  console.log("flag--------------props", flag);
   //const collection = props[type];
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Grid = (props) => {
       });
   }, []);
 
-  console.log("1234321!", data);
+  console.log("----------------grid data", data);
   if (propiedades.length < 1) {
     datas = data;
   } else {

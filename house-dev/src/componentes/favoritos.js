@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../start.css";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import Grid from "./Grid";
 import Navbar from "./Navbar";
@@ -14,9 +13,6 @@ function Favoritos() {
     localidad: "", // Inicializa las propiedades en el estado
     precio: 0, // Inicializa las propiedades en el estado
     ambientes: 0, // Inicializa las propiedades en el estado
-  });
-  const propiedades = useSelector((state) => {
-    return state.propiedades;
   });
 
   const handlePrecioChange = (e) => {
@@ -36,17 +32,17 @@ function Favoritos() {
   const handleSumit = (e) => {
     e.preventDefault();
     axios
-      .get("http://localhost:5000/favoritos", { params: form })
-      .then((data) => {
-        dispatch({ type: "SET_PROPIEDADES", payload: data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      */
+    .get("http://localhost:5000/favoritos", { params: form })
+    .then((data) => {
+      dispatch({ type: "SET_PROPIEDADES", payload: data });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    */
   useEffect(() => {
     axios
-      .get("http://localhost:5000/favoritos", {
+      .get("http://localhost:5000/api/favoritos", {
         withCredentials: true,
       })
       .then((data) => {
@@ -57,6 +53,10 @@ function Favoritos() {
       });
   }, []);
 
+  const propiedades = useSelector((state) => {
+    return state.propiedades;
+  });
+  console.log("propiedades fav----------------", propiedades);
   // Puedes hacer algo con los datos del formulario aquí
   //};
 

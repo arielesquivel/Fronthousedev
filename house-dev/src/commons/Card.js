@@ -28,7 +28,11 @@ const Card = (props) => {
           withCredentials: true,
         }
       )
-      .then(alert("exitoso posteo"))
+      .then((result) => {
+        setBtnFavoritosCheck(true);
+        console.log(result);
+        alert("exitoso posteo");
+      })
       .catch((error) => {
         alert(error);
       });
@@ -43,7 +47,12 @@ const Card = (props) => {
           withCredentials: true,
         }
       )
-      .then(alert("exitoso cambio"))
+      .then((result) => {
+        setBtnFavoritosCheck(true);
+        console.log(result);
+        alert("exitoso posteo");
+      })
+
       .catch((error) => {
         alert(error);
       });
