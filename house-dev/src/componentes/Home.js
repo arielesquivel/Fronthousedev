@@ -157,9 +157,9 @@ function Home() {
                 <option>Esperanza</option>
                 <option>Chivilcoy</option>
                 <option>Aldao</option>
-                <option>Argentino</option>
+                <option>Villa Ortuzar</option>
                 <option>Bahía Blanca</option>
-                <option>Buenos Aires</option>
+                <option>Villa Urquiza</option>
               </select>
             </div>
             <button onClick={handleSumit} class="btn btn-secondary">

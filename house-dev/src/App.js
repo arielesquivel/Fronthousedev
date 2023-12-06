@@ -18,6 +18,7 @@ import EditarPropiedades from "./componentes/EditarPropiedades";
 import userEvent from "@testing-library/user-event";
 import { useSelector } from "react-redux";
 import CitasAdmin from "./componentes/CitasAdmin";
+import Favoritos from "./componentes/favoritos";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function App() {
             <Route path="/admin/citas" element={<CitasAdmin />} />
           </>
         )}
+        <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/usuarios" element={<VistaUsers />} />
         <Route path="/buscador" element={<Buscador />} />
         <Route path="users/:id/*" element={<VistaUsers />} />

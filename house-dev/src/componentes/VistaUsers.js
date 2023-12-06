@@ -13,6 +13,7 @@ const override: CSSProperties = {
 function VistaUsers() {
   const navigate = useNavigate();
   const [data, setData] = useState({});
+  const [changeData, setChangeData] = useState({});
   let [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#ffffff");
   useEffect(() => {
@@ -27,6 +28,33 @@ function VistaUsers() {
         navigate("/404");
       });
   }, []);
+  const handleInputChange = (e) => {
+    changeData[e.target.name] = e.target.value;
+  };
+
+  const [isCheckedCambiar, setCheckedCambiar] = useState(true);
+
+  const handleCheckboxChangeCambiar = () => {
+    setCheckedCambiar(!isCheckedCambiar);
+  };
+  const handleSummit = (e) => {
+    e.preventDefault();
+    axios
+      .put("http://localhost:5000/api/users/cambiar", changeData, {
+        withCredentials: true,
+      })
+      .then((result) => {
+        console.log(result);
+        alert("cambio exitoso");
+        //navigate("/admin/propiedades");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(
+          "hubo un problema. Por favor recargue la pagina o contactese con un administrador"
+        );
+      });
+  };
 
   if (!data.id) {
     return (
@@ -66,14 +94,73 @@ function VistaUsers() {
               />
             </div>
             <div>
-              <p>Nombre:{data.name}</p>
-              <p>Apellido:{data.lastName}</p>
-              <p>Contacto:{data.contact}</p>
-              <p>Email:{data.email}</p>
+              <label>Nombre:</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                onChange={handleInputChange}
+                value={changeData.name || data.name}
+                disabled={isCheckedCambiar}
+              />
+              <label>Apellido:</label>
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Apellido"
+                onChange={handleInputChange}
+                value={changeData.lastName || data.lastName}
+                disabled={isCheckedCambiar}
+              />
+              <label>Contacto:</label>
+              <input
+                type="text"
+                name="contact"
+                placeholder="Contacto"
+                onChange={handleInputChange}
+                value={changeData.contact || data.contact}
+                disabled={isCheckedCambiar}
+              />
+              <label>Email:</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Ingrese su email"
+                onChange={handleInputChange}
+                value={changeData.email || data.email}
+                disabled={isCheckedCambiar}
+              />
               <p className={data.password ? "oculto" : ""}>
                 Contraseña: {data.password}
               </p>
-              <button class="btn btn-dark btn2">Editar Informacion</button>
+              {isCheckedCambiar ? (
+                <button
+                  class="btn btn-dark btn2"
+                  value={isCheckedCambiar}
+                  onClick={handleCheckboxChangeCambiar}
+                  disabled={!isCheckedCambiar}
+                >
+                  Editar Informacion
+                </button>
+              ) : (
+                <>
+                  <button
+                    class="btn btn-dark btn2"
+                    value={isCheckedCambiar}
+                    onClick={handleCheckboxChangeCambiar}
+                    disabled={isCheckedCambiar}
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    class="btn btn-dark btn2"
+                    onClick={handleSummit}
+                    disabled={isCheckedCambiar}
+                  >
+                    Cambiar datos
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
