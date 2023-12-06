@@ -22,6 +22,7 @@ function EditarPropiedades() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState({});
+  const [changeData, setChangeData] = useState({});
   let [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#ffffff");
   const user = useSelector((state) => {
@@ -38,6 +39,17 @@ function EditarPropiedades() {
       });
   }, []);
 
+  const [isCheckedAlquilar, setCheckedAlquilar] = useState(data.alquilar);
+
+  const [isCheckedVender, setCheckedVender] = useState(data.vender);
+
+  const handleCheckboxChangeAlquilar = () => {
+    setCheckedAlquilar(!isCheckedAlquilar);
+  };
+  const handleCheckboxChangeVender = () => {
+    setCheckedVender(!isCheckedVender);
+  };
+
   const deleteHandle = () => {
     axios
       .delete(`http://localhost:5000/api/propiedades/${id}`)
@@ -50,8 +62,83 @@ function EditarPropiedades() {
         );
       });
   };
-  const editHandle = () => {
-    navigate("/admin/editar");
+
+  const handleA = (e) => {
+    changeData[e.target.name] = e.target.value;
+  };
+  const editHandle = (e) => {
+    //  navigate("/admin/editar");
+    //};
+    //const handleSummit = (e) => {
+    e.preventDefault();
+    const ambientes =
+      parseInt(changeData.dormitorios) + parseInt(changeData.baños);
+    const payload = [...changeData];
+    payload.alquilar = isCheckedAlquilar;
+    payload.vender = isCheckedVender;
+    payload.ambientes = ambientes;
+
+    axios
+      .put("http://localhost:5000/api/propiedades/cambiar/", formData, {
+        withCredentials: true,
+      })
+      .then((result) => {
+        console.log(result);
+        navigate("/admin/propiedades");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert(
+          "hubo un problema. Por favor recargue la pagina o contactese con un administrador"
+        );
+      });
+    /*{
+ axios.post(
+        
+        
+      );
+
+
+      nombre: form.nombrePropiedad,
+      alquilar: isCheckedAlquilar,
+      vender: isCheckedVender,
+      categoria: form.tipo || "casa",
+      ambientes: ambiente,
+      baños: parseInt(ambientes.baños),
+      dormitorios: parseInt(ambientes.dormitorios),
+      disponibilidad: true,
+      direccion: form.direccion,
+      localidad: "cacsa",
+      localizacion: "ascac",
+      precio: parseInt(form.precio),
+      metraje: parseInt(form.metraje),
+      description: form.descripcion,
+    };
+*/
+    /*
+    if (
+      !payload.nombre ||
+      !payload.categoria ||
+      !payload.ambientes ||
+      !payload.direccion ||
+      !payload.precio ||
+      !payload.description ||
+      (!payload.alquilar && !payload.vender) ||
+      !payload.baños ||
+      !payload.dormitorios
+    ) {
+      alert("datos incorrectos");
+    } else {
+      axios
+        .post("http://localhost:5000/api/propiedades", payload, {
+          withCredentials: true,
+        })
+        .then(alert("exitoso posteo"))
+        .catch((error) => {
+          alert(error);
+        });
+    }
+    */
   };
 
   if (!data.id) {
@@ -128,28 +215,154 @@ function EditarPropiedades() {
         <div>
           <div className="vistadepropiedades">
             <div className="col-md-2">
-              <h1 placeholder="nombre de la propiedad">{data.nombre}</h1>
-              <p placeholder="Descripcion">Descripcion: {data.description}</p>
-              <p placeholder="Precio">
-                Precio: <TbBrandCashapp /> {data.precio}
-              </p>
-              <p placeholder="Tamaño">
-                <LiaRulerCombinedSolid />
-                Mts: {data.metraje}
-              </p>
-              <p placeholder="Ubicacion">
-                <IoLocationOutline />
-                Ubicacion: {data.direccion}
-              </p>
-              <p placeholder="Tipo de Propiedad">
-                <FaHome />:{data.categoria}
-              </p>
-              <p placeholder="Cantidad de dormitorios">
-                <IoIosBed /> Dormitorios: {data.dormitorios}
-                <p placeholder="Cantidad de baños">
-                  <GiBathtub /> Baños: {data.baños}
-                </p>
-              </p>
+              <label>Nombre</label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                placeholder="nombre de la propiedad"
+                value={changeData.nombre || data.nombre}
+                onChange={handleA}
+              />
+              <label>Descripcion:</label>
+              <input
+                placeholder="Descripcion"
+                type="text"
+                name="description"
+                id="Descripc"
+                value={changeData.description || data.description}
+                onChange={handleA}
+              />
+              <label>Precio:</label>
+              <input
+                type="number"
+                name="precio"
+                id="precio"
+                min="0"
+                max="9999999"
+                placeholder="$USD"
+                value={changeData.precio || data.precio}
+                onChange={handleA}
+              />
+              <label>
+                Alquilar
+                <input
+                  type="checkbox"
+                  checked={isCheckedAlquilar}
+                  onChange={handleCheckboxChangeAlquilar}
+                />
+              </label>
+              <label>vender</label>
+              <input
+                type="checkbox"
+                checked={isCheckedVender}
+                onChange={handleCheckboxChangeVender}
+              />
+              <label>Metraje:</label>
+              <input
+                placeholder="Tamaño"
+                type="number"
+                name="metraje"
+                min="0"
+                max="999999"
+                value={changeData.metraje || data.metraje}
+                onChange={handleA}
+              />
+              <label>Direccion:</label>
+              <input
+                type="text"
+                name="direccion"
+                id="direccion"
+                placeholder="Direccion"
+                value={changeData.direccion || data.direccion}
+                onChange={handleA}
+              />
+              <label>localidad:</label>
+              <select
+                id="localidad"
+                name="localidad"
+                value={changeData.localidad || data.localidad}
+                onChange={handleA}
+              >
+                <option value="">Seleccione una opcion</option>
+                <option value="Retiro">Retiro</option>
+                <option value="San Nicolás">San Nicolás</option>
+                <option value="Puerto Madero">Puerto Madero</option>
+                <option value="San Telmo">San Telmo</option>
+                <option value="Montserrat">Montserrat</option>
+                <option value="Constitución">Constitución</option>
+                <option value="Recoleta"> Recoleta</option>
+                <option value="Balvanera">Balvanera</option>
+                <option value="San Cristóbal">San Cristóbal</option>
+                <option value="La Boca">La Boca</option>
+                <option value="Barracas">Barracas</option>
+                <option value="Parque Patricios">Parque Patricios</option>
+                <option value="Nueva Pompeya">Nueva Pompeya</option>
+                <option value="Almagro">Almagro </option>
+                <option value="Boedo">Boedo</option>
+                <option value="Caballito">Caballito</option>
+                <option value="Flores">Flores</option>
+                <option value="Parque Chacabuco">Parque Chacabuco</option>
+                <option value="Villa Soldati">Villa Soldati</option>
+                <option value="Villa Riachuelo">Villa Riachuelo </option>
+                <option value="Villa Lugano">Villa Lugano</option>
+                <option value="Liniers">Liniers</option>
+                <option value="Mataderos">Mataderos</option>
+                <option value="Parque Avellaneda">Parque Avellaneda</option>
+                <option value="Villa Real">Villa Real</option>
+                <option value="Monte Castro">Monte Castro</option>
+                <option value="Versalles">Versalles</option>
+                <option value="Floresta">Floresta</option>
+                <option value="Vélez">Vélez</option>
+                <option value="Sarsfield">Sarsfield</option>
+                <option value="Villa Luro">Villa Luro</option>
+                <option value="Tres de Febrero">Tres de Febrero</option>
+                <option value="Belgrano">Belgrano</option>
+                <option value="Palermo">Palermo</option>
+                <option value="Once">Once</option>
+                <option value="Jesús María">Jesús María</option>
+                <option value="Recoleta">Recoleta</option>
+                <option value="Glew">Glew</option>
+                <option value="Ensenada">Ensenada</option>
+                <option value="Esperanza">Esperanza</option>
+                <option value="Chivilcoy">Chivilcoy</option>
+                <option value="Aldao">Aldao</option>
+                <option value="Villa Ortuzar">Villa Ortuzar</option>
+                <option value="Bahía Blanca">Bahía Blanca</option>
+                <option value="Villa Urquiza">Villa Urquiza</option>
+              </select>
+              <label>Categoria:</label>
+              <select
+                id="categoria"
+                name="categoria"
+                value={changeData.categoria || data.categoria}
+                onChange={handleA}
+              >
+                <option value="Casa">Casa</option>
+                <option value="Departamento">Departamento</option>
+                <option value="Local">Local</option>
+                <option value="Lote">Lote</option>
+              </select>
+              <label>Dormitorios:</label>
+              <input
+                type="number"
+                min="0"
+                max="4"
+                placeholder="Dormitorios"
+                name="dormitorios"
+                value={changeData.dormitorios || data.dormitorios}
+                onChange={handleA}
+              />
+              <label>Baños:</label>
+              <input
+                type="number"
+                min="0"
+                max="4"
+                placeholder="Baños"
+                name="baños"
+                value={changeData.baños || data.baños}
+                onChange={handleA}
+              />
             </div>
           </div>
           <div>

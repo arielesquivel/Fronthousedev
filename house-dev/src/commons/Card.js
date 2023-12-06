@@ -6,17 +6,19 @@ import { TbBrandCashapp } from "react-icons/tb";
 import { LiaRulerCombinedSolid } from "react-icons/lia";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { useState } from "react";
 import { IoIosPhonePortrait } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
 import { CiMail } from "react-icons/ci";
 const Card = (props) => {
+  const [btnFavoritosCheck, setBtnFavoritosCheck] = useState(true);
   const data = props.data.data;
   console.log(data);
   let flag = props.data.flag;
   const user = useSelector((state) => {
     return state.user;
   });
-  const handlefavoritos = () => {
+  const handlefavoritosAdd = () => {
     console.log("estos son los datos de la card", data.id);
     axios
       .post(
@@ -31,12 +33,31 @@ const Card = (props) => {
         alert(error);
       });
   };
+  const handlefavoritosDel = () => {
+    console.log("estos son los datos de la card", data.id);
+    axios
+      .delete(
+        "http://localhost:5000/api/favoritos",
+        { propiedad_id: data.id },
+        {
+          withCredentials: true,
+        }
+      )
+      .then(alert("exitoso cambio"))
+      .catch((error) => {
+        alert(error);
+      });
+  };
   const handleCancelar = () => {
     axios
       .post("http://localhost:5000/api/citas/rechazado", data.email, {
         withCredentials: true,
       })
-      .then(alert("exitoso posteo"))
+      .then((result) => {
+        setBtnFavoritosCheck(true);
+        console.log(result);
+        alert("exitoso posteo");
+      })
       .catch((error) => {
         alert(error);
       });
@@ -46,7 +67,11 @@ const Card = (props) => {
       .post("http://localhost:5000/api/citas/aceptado", data.email, {
         withCredentials: true,
       })
-      .then(alert("exitoso posteo"))
+      .then((result) => {
+        setBtnFavoritosCheck(true);
+        console.log(result);
+        alert("exitoso posteo");
+      })
       .catch((error) => {
         alert(error);
       });
@@ -93,12 +118,21 @@ const Card = (props) => {
                       <LiaRulerCombinedSolid /> {data.metraje}
                     </small>
                   </p>
-                  <button
-                    class="btn btn-outline-secondary"
-                    onClick={handlefavoritos}
-                  >
-                    favoritos
-                  </button>
+                  {btnFavoritosCheck ? (
+                    <button
+                      class="btn btn-outline-secondary"
+                      onClick={handlefavoritosAdd}
+                    >
+                      agregar a favoritos
+                    </button>
+                  ) : (
+                    <button
+                      class="btn btn-outline-secondary"
+                      onClick={handlefavoritosDel}
+                    >
+                      quitar de favoritos
+                    </button>
+                  )}
                   <Link to={`/propiedades/${data.id}`}>
                     <button class="btn btn-outline-secondary">ver mas</button>
                   </Link>
